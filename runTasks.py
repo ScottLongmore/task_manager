@@ -21,11 +21,6 @@ import importlib
 import logging
 import traceback
 
-# change to the current working directory in cron
-executable_path = os.path.abspath(__file__)
-current_working_directory = os.path.dirname(executable_path)
-os.chdir(current_working_directory)
-
 # Log
 import setup_logging
 
@@ -35,6 +30,11 @@ import fileAction
 import dirRE
 import utils
 import libTask
+
+# change to the current working directory in cron
+executable_path = os.path.abspath(__file__)
+current_working_directory = os.path.dirname(executable_path)
+os.chdir(current_working_directory)
 
 # setup logging
 logging_setup = "runTasks"

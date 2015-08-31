@@ -21,6 +21,11 @@ import pprint
 import utils
 import error_codes
 
+# change to the current working directory in cron
+executable_path = os.path.abspath(__file__)
+current_working_directory = os.path.dirname(executable_path)
+os.chdir(current_working_directory)
+
 LOG = logging.getLogger(__name__)
 
 schema_completed = json.load(open("./schema_completed.json", 'r'),
