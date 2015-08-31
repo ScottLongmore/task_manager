@@ -59,7 +59,6 @@ def TASKS(config):
     config : dict
     """
     meta = config['meta']
-    plugin = config['plugin']
     inputs = config['inputs']['grib2']
 
     tasksLogFile = os.path.join(config['logDir'],
