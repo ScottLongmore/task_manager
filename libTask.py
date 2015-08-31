@@ -23,7 +23,7 @@ import error_codes
 
 LOG = logging.getLogger(__name__)
 
-schema_completed = json.dump(schema_completed, open("./schema_completed.json", 'r'),
+schema_completed = json.load(open("./schema_completed.json", 'r'),
                              object_pairs_hook=collections.OrderedDict)
 
 
