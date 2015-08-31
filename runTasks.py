@@ -126,8 +126,8 @@ readTasks = read_tasks_json_file(config['completeTaskFile'])
 
 # Purge unneeded tasks using plug-in purge method
 try:
-    args=[workConfig, readTasks]
-    completeTasks = getattr(module,purgeMethod)(*args)
+    args = [workConfig, readTasks]
+    completeTasks = getattr(module, purgeMethod)(*args)
     del readTasks[:]
 except:
     msg = "Problem in module: {} purge method: {}".format(module, purgeMethod)
@@ -158,7 +158,7 @@ while(tasks):
     LOG.info("{}".format(print_tasks_keys_values(tasks, primeTasksKey)))
 
     # Get latest task
-    task=tasks.pop(0)
+    task = tasks.pop(0)
 
     # Execute task
     try:
@@ -182,8 +182,8 @@ while(tasks):
         args = [workConfig]
         createdTasks = getattr(module, tasksMethod)(*args)
     except:
-         msg = "Problem in module: {} tasks routine: {}".format(module, tasksMethod)
-         error(LOG, msg, error_codes.EX_IOERR)
+        msg = "Problem in module: {} tasks routine: {}".format(module, tasksMethod)
+        error(LOG, msg, error_codes.EX_IOERR)
 
     # Compare complete, created, executed and current tasks lists, prepend new tasks to task list
     workTasks = new_tasks(completeTasks, createdTasks)
@@ -198,7 +198,7 @@ while(tasks):
     # Update completed tasks list json file
     LOG.info("Updating completed tasks list JSON file: {}".format(config['completeTaskFile']))
     writeTasks = executedTasks + completeTasks
-    writeTasks = sort_tasks(writeTasks,primeTasksKey, workConfig['sortReverseOption'])
+    writeTasks = sort_tasks(writeTasks, primeTasksKey, workConfig['sortReverseOption'])
     write_tasks_json_file(config['completeTaskFile'], writeTasks)
     del writeTasks[:]
 
@@ -206,4 +206,3 @@ while(tasks):
 LOG.info("Tasks Executed:")
 LOG.info("{}".format(print_tasks_keys_values(executedTasks, primeTasksKey)))
 LOG.info("Completed")
-
