@@ -17,7 +17,6 @@ import subprocess
 
 # Local modules
 import error_codes
-from utils import *
 import fileAction
 import dirRE
 
