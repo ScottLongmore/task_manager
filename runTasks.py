@@ -1,4 +1,5 @@
 #!/home/cslocum/app/anaconda/bin/python
+# -*- coding: utf-8 -*-
 """
 runTasks.py - creates and runs tasks from a json configuration file, which specifies the plugin task, work, and purge methods
               for generating, executing, and removing tasks. Completed tasks are written to a task list json file for future runs
@@ -30,6 +31,14 @@ import fileAction
 import dirRE
 import utils
 import libTask
+
+__author__ = 'Scott Longmore'
+__copyright__ = 'Copyright 2015'
+__version__ = '1.0dev1'
+__license__ = 'BSD 3-clause'
+__maintainer__ = 'Scott Longmore'
+__email__ = 'scott.longmore@colostate.edu'
+
 
 # change to the current working directory in cron
 executable_path = os.path.abspath(__file__)
