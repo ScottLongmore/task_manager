@@ -18,7 +18,7 @@ import jsonschema
 import pprint
 
 # Local modules
-from utils import *
+import utils
 import error_codes
 
 LOG = logging.getLogger(__name__)
@@ -50,7 +50,7 @@ def read_tasks_json_file(jsonFile):
             msg = ''
             for err in errs:
                 msg += err.message
-            error(LOG, msg, error_codes.EX_IOERR)
+            utils.error(LOG, msg, error_codes.EX_IOERR)
     except:
         LOG.info("Unable to open/process: {} task list json file".format(jsonFile))
         tasks = {}  # CS -- What if there is no completed file? The return fails.
@@ -77,7 +77,7 @@ def write_tasks_json_file(jsonFile, tasks):
         taskFH.close()
     except:
         msg = "Unable to open/write: {} task list json file".format(jsonFile)
-        error(LOG, msg, error_codes.EX_IOERR)
+        utils.error(LOG, msg, error_codes.EX_IOERR)
     return()
 
 
@@ -87,7 +87,7 @@ def sort_tasks(tasks, keyOption, reverseOption):
         sortedTasks = sorted(tasks, key=operator.itemgetter(keyOption), reverse=reverseOption)
     except:
         msg = "Unable to sort task list"
-        error(LOG, msg, error_codes.EX_IOERR)
+        utils.error(LOG, msg, error_codes.EX_IOERR)
     return(sortedTasks)
 
 
@@ -98,7 +98,7 @@ def compare_tasks(tasks1, tasks2):
                  + list(itertools.ifilterfalse(lambda x: x in tasks2, tasks1))
     except:
         msg = "Unable to compare task lists"
-        error(LOG, msg, error_codes.EX_IOERR)
+        utils.error(LOG, msg, error_codes.EX_IOERR)
     return(diffList)
 
 
@@ -108,7 +108,7 @@ def new_tasks(tasks, updatedTasks):
         newTasks = list(itertools.ifilterfalse(lambda x: x in tasks, updatedTasks))
     except:
         msg = "Unable to get new task lists"
-        error(LOG, msg, error_codes.EX_IOERR)
+        utils.error(LOG, msg, error_codes.EX_IOERR)
     return(newTasks)
 
 
@@ -118,7 +118,7 @@ def prepend_tasks(tasks, prependTasks):
         tasks[:0] = prependTasks
     except:
         msg = "Unable to prepend task lists"
-        error(LOG, msg, error_codes.EX_IOERR)
+        utils.error(LOG, msg, error_codes.EX_IOERR)
     return(True)
 
 
