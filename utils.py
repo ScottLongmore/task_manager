@@ -166,10 +166,10 @@ def listToRE(list):
 
     return(RE)
 
-'''
-repStrTmpl - replace a template string with a set of strings/REs and return the new string/RE
-'''
 def repStrTmpl(tmplString,strings,ldelim='%',rdelim=''):
+    """
+    repStrTmpl - replace a template string with a set of strings/REs and return the new string/RE
+    """
 
     try:
         strTypes=(types.StringType, types.UnicodeType)
@@ -180,7 +180,6 @@ def repStrTmpl(tmplString,strings,ldelim='%',rdelim=''):
             strValue=strings[strKey]
             tmpl="{}{}{}".format(ldelim,strKey,rdelim)
             if isinstance(strValue,strTypes):
-	        # print "\t{} {} {} {}".format(strKey,tmpl,strValue,newString) 
                 newString=newString.replace(tmpl,strValue)
             elif isinstance(strValue, list):
                 unique=list(set(strValue))
@@ -200,11 +199,11 @@ def repStrTmpl(tmplString,strings,ldelim='%',rdelim=''):
 
     return(newString)
       
-'''
-parseDirEntries - parse a list of directory entries (dir, dir file, or dirRE) 
-                  and return expanded dir list
-'''
 def parseDirEntries(entries):
+    """
+    parseDirEntries - parse a list of directory entries (dir, dir file, or dirRE) 
+                      and return expanded dir list
+    """
 
     dirs=[]
     for entry in entries: 
@@ -233,7 +232,7 @@ def parseDirEntries(entries):
     return(dirs)
 
 def getProcesses(commandRE):
-    '''
+    """
     Returns a dictonary of process objects for a given command line regular
     expression. Returns None if process not found
 
@@ -244,7 +243,7 @@ def getProcesses(commandRE):
     Returns
     -------
     processes : dict
-    '''
+    """
 
     procAttrs=['username', 'pid', 'cmdline', 'create_time', 'cpu_percent', 'terminal', 'ppid', 'cwd', 'nice', 'status', \
                'cpu_times', 'open_files', 'name', 'num_threads', 'exe', 'uids', 'gids', 'memory_percent','parent','children']
@@ -261,16 +260,16 @@ def getProcesses(commandRE):
 
     return(processes)
 
-'''
-readBinaryFileHeader - Reads a binary file using the size/format definitions in a header dictionary
-                       Adds a values array for each header attribute and returns true on success
-                       header attributes: size= # of bytes, format = python unpack format definition
-                       header={
-                               "string":{ "size":4, format:"4s",
-                               "integer":{ "size":4, format: "i"
-                              }
-'''
 def readBinaryFileHeader(headerDef,filePath):
+    """
+    readBinaryFileHeader - Reads a binary file using the size/format definitions in a header dictionary
+                           Adds a values array for each header attribute and returns true on success
+                           header attributes: size= # of bytes, format = python unpack format definition
+                           header={
+                                   "string":{ "size":4, format:"4s",
+                                   "integer":{ "size":4, format: "i"
+                                  }
+    """
 
     try:
          FH=open(filePath,'rb')
@@ -292,16 +291,16 @@ def readBinaryFileHeader(headerDef,filePath):
     return(True)
 
 
-'''
-warning - append message to a log object 
-'''
 def warning(LOG,msg="Unexpected Warning:"):
+    """
+    warning - append message to a log object 
+    """
     LOG.warn(msg)
 
-'''
-error - append message to a log object and throw an error 
-'''
-def error(LOG,msg="Unexpected Error:",code=1):
+def error(LOG, msg="Unexpected Error:", code=1):
+    """
+    error - append message to a log object and throw an error
+    """
     LOG.exception(msg)
     sys.exit(code)
 
