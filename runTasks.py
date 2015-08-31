@@ -44,7 +44,6 @@ schema_task = json.load(open('schema_task.json', 'r'), object_pairs_hook=collect
 # Determine if process is running, or in zombie state
 cpid = os.getpid()
 commandRE = "^{}$".format(" +".join([sys.executable] + sys.argv))
-# LOG.info("Command RE: {}".format(commandRE))
 procs = utils.getProcesses(commandRE)
 if cpid in procs:
     del procs[cpid]
@@ -52,7 +51,6 @@ if len(procs) > 0:
     for pid in procs:
         if procs[pid].status() != psutil.STATUS_ZOMBIE:
             LOG.info("Process {} ({}) is running, exiting".format(__file__, pid))
-            # LOG.info("Process Command Line: {}".format(procs[pid].cmdline()))
             sys.exit(0)
         else:
             LOG.info("Process {} ({}) is in zombie state, terminating".format(__file__, pid))

@@ -25,8 +25,8 @@ LOG = logging.getLogger(__name__)  # create the logger for this file
 fcsts = range(0, 127, 6)
 
 # Parameters
-DTSFormat = "%Y%m%d%H"
-ISODTSFormat = "%Y%m%dT%H"
+DTSFormat = "%Y%m%d%H%M%S"
+ISODTSFormat = "%Y%m%dT%H%M%S"
 
 
 def PURGE(config, tasks):
@@ -74,7 +74,7 @@ def TASKS(config):
 
         m = re.match(inputs['re'], os.path.basename(filepath))
         fields = m.groupdict()
-        DTS = fields['DTS']
+        DTS = fields['DTS'] + '0000'
         DTG = datetime.datetime.strptime(DTS, DTSFormat)
         fcst = fields['fcst']
         file_id = "_".join([DTS, fcst])
@@ -115,5 +115,5 @@ def WORK(config, task):
     -------
     status : Boolean
     """
-    status = True
+    status = False
     return(status)

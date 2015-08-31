@@ -25,7 +25,6 @@ LOG = logging.getLogger(__name__)
 
 schema_completed = json.load(open("./schema_completed.json", 'r'),
                              object_pairs_hook=collections.OrderedDict)
-print "*****", type(schema_completed)
 
 
 def read_tasks_json_file(jsonFile):
