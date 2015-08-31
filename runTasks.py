@@ -45,7 +45,7 @@ def error(LOG, msg="Unexpected Error:", code=1):
 # Variables
 runDTG = datetime.datetime.utcnow()
 ISODTSFormat = "%Y%m%dT%H%M%S"
-schema = json.load(open('schema.json', 'r'), object_pairs_hook=collections.OrderedDict)
+schema_task = json.load(open('schema_task.json', 'r'), object_pairs_hook=collections.OrderedDict)
 
 # Determine if process is running, or in zombie state
 cpid = os.getpid()
@@ -81,7 +81,7 @@ try:
     LOG.info("Processing JSON config file: {}".format(config_filename))
     config = json.load(open(config_filename), object_pairs_hook=collections.OrderedDict)
 
-    validator = jsonschema.Draft4Validator(schema)
+    validator = jsonschema.Draft4Validator(schema_task)
     errs = sorted(validator.iter_errors(config), key=lambda e: e.path)
 
     if errs:

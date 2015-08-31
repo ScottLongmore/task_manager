@@ -23,22 +23,15 @@ import error_codes
 
 LOG = logging.getLogger(__name__)
 
-taskSchema={
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "description": "task schema",
-  "type": "array",
-  "items": {
-     "type": "object"
-  }
-}
-
+schema_completed = json.dump(schema_completed, open("./schema_completed.json", 'r'),
+                             object_pairs_hook=collections.OrderedDict)
 def read_tasks_json_file(jsonFile):
     '''Read Task list JSON file'''
     try:
         LOG.info("Processing task list JSON file: {}".format(jsonFile))
         tasks = json.load(open(jsonFile, 'r'), object_pairs_hook=collections.OrderedDict)
 
-        validator = jsonschema.Draft4Validator(taskSchema)
+        validator = jsonschema.Draft4Validator(schema_completed)
         errs = sorted(validator.iter_errors(tasks), key=lambda e: e.path)
 
         if errs:
