@@ -115,7 +115,5 @@ def WORK(config, task):
     -------
     status : Boolean
     """
-    status = False
-    raise NotImplementedError
-
+    status = True
     return(status)

@@ -25,6 +25,7 @@ LOG = logging.getLogger(__name__)
 
 schema_completed = json.load(open("./schema_completed.json", 'r'),
                              object_pairs_hook=collections.OrderedDict)
+print "*****", type(schema_completed)
 
 
 def read_tasks_json_file(jsonFile):
@@ -53,7 +54,7 @@ def read_tasks_json_file(jsonFile):
             utils.error(LOG, msg, error_codes.EX_IOERR)
     except:
         LOG.info("Unable to open/process: {} task list json file".format(jsonFile))
-        tasks = {}  # CS -- What if there is no completed file? The return fails.
+        tasks = [] # CS -- What if there is no completed file? The return fails.
     return(tasks)
 
 
@@ -71,6 +72,8 @@ def write_tasks_json_file(jsonFile, tasks):
     -------
     None : NoneType
     """
+    print jsonFile
+    print tasks
     try:
         taskFH = open(jsonFile, "w")
         taskFH.write(json.dumps(tasks, indent=4, skipkeys=True))

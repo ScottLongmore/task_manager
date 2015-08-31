@@ -108,7 +108,6 @@ LOG.info("Backward search datetime: {}".format(meta['bkwdDTG'].strftime(ISODTSFo
 # Add config replace section, add DTG strings
 config['replace'] = {}
 config['replace'].update(utils.DTGrangeToStrings(meta['bkwdDTG'], meta['runDTG'], meta['DTGfrmts']))
-# print json.dumps(config['replace'])
 
 # Copy master config to workConfig
 workConfig = copy.deepcopy(config)
