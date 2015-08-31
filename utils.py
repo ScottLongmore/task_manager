@@ -19,7 +19,7 @@ import dirRE
 
 LOG = logging.getLogger(__name__)
 
-DTGFRMTS=collections.OrderedDict(
+DTGFRMTS = collections.OrderedDict(
          {
          'Y':{
              'format':'%Y',
@@ -51,11 +51,11 @@ DTGFRMTS=collections.OrderedDict(
              },
          'M':{
              'format':'%M',
-	     'rule':rrule.MINUTELY
+         'rule':rrule.MINUTELY
              },
          'S':{
              'format':'%S',
-	     'rule':rrule.MINUTELY
+         'rule':rrule.MINUTELY
              }
          }
          )
@@ -77,26 +77,26 @@ def splitall(path):
 
 def ddhh2pack(day,hour):
 
-    if hour==0:
-        pcode='X'
-        pday=day
-    elif hour==6:
-        pcode='Y'
-        pday=day
-    elif hour==12:
-        pcode='X'
-        pday=day+50
-    elif hour==18:
-        pcode='Y'
-        pday=day+50
+    if hour == 0:
+        pcode = 'X'
+        pday = day
+    elif hour == 6:
+        pcode = 'Y'
+        pday = day
+    elif hour == 12:
+        pcode = 'X'
+        pday = day + 50
+    elif hour == 18:
+        pcode = 'Y'
+        pday = day + 50
     else:
-        msg="Hour: {} is not a synoptic time (0,6,12,18)".format(hour)
-        error(LOG,msg,error_codes.EX_IOERR)
- 
+        msg = "Hour: {} is not a synoptic time (0,6,12,18)".format(hour)
+        error(LOG, msg, error_codes.EX_IOERR)
+
     return(pcode,pday)
-     
+
 def pack2hhdd(pcode,pday):
-    
+
     if pcode == 'X' and pday < 50:
        hour=0 
     elif pcode == 'Y' and pday < 50:

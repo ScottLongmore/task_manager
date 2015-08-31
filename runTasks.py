@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/home/cslocum/app/anaconda/bin/python
 """
 runTasks.py - creates and runs tasks from a json configuration file, which specifies the plugin task, work, and purge methods
               for generating, executing, and removing tasks. Completed tasks are written to a task list json file for future runs
@@ -11,7 +11,7 @@ import os
 import re
 import psutil
 import datetime
-import optparse  # deprecated
+import argparse
 import operator
 import collections
 import copy
@@ -20,6 +20,11 @@ import jsonschema
 import importlib
 import logging
 import traceback
+
+# change to the current working directory in cron
+executable_path = os.path.abspath(__file__)
+current_working_directory = os.path.dirname(executable_path)
+os.chdir(current_working_directory)
 
 # Log
 import setup_logging
@@ -57,12 +62,12 @@ if len(procs) > 0:
             procs[pid].kill()
 
 # Read Command Line Arguments
-options = optparse.OptionParser()
-options.add_option("-c", "--config", dest="config", help="Configuration File")
+options = argparse.ArgumentParser(prog='runTasks')
+options.add_argument('-c', '--config', dest='config', help='Configuration File')
 
 try:
-    (opts, args) = options.parse_args()
-    config_filename = opts.config
+    args = options.parse_args()
+    config_filename = args.config
 
 except:
     msg = 'Syntax: python runTasks.py -c <config.json>'
