@@ -1,6 +1,7 @@
 Task Manager v2.0.1 20150911T12000
 
 Scott Longmore - developer
+
 Chris Slocum - developer
 
 Task Manager is an algorithm automation framework to build tasks for algorithms 
@@ -8,11 +9,11 @@ and execute those algorithms with created task data.
 
 The framework currently utilized 3 main components:
 
-runTasks.py - the automation program the calls configuration specified task plugin module routines
+* runTasks.py - the automation program the calls configuration specified task plugin module routines
 
-<name>.json - the JSON configuration for the plugin module
+* <name>.json - the JSON configuration for the plugin module
 
-plgn<name>.py - the plug-in module that defines:
+* plgn<name>.py - the plug-in module that defines:
 
                 TASKS - task creation - builds tasks e.g. data files, parameters, etc 
                         inputs: config (dictionary from configuration JSON, and runTasks meta data)
@@ -24,9 +25,9 @@ plgn<name>.py - the plug-in module that defines:
 
 Directory Structure:
 
-scripts/ - hosts the runTasks.py, libTasks.py and linked python utility libraries
-lib/ - utility libraries including:
+* scripts/ - hosts the runTasks.py, libTasks.py and linked python utility libraries
+* lib/ - utility libraries including:
      - fileAction.py (file search regular expression module) 
      - dirRE.py (directory search regular expression module, used by fileAction.py) 
-etc/ - hosts the JSON schema validation files for runTasks configuration and completed files
-plugins/ - hosts examples of plugin modules (plgn<name>.py)and configuration files (<name>.json)
+* etc/ - hosts the JSON schema validation files for runTasks configuration and completed files
+* plugins/ - hosts examples of plugin modules (plgn<name>.py)and configuration files (<name>.json)
