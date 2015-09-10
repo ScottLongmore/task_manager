@@ -13,6 +13,8 @@ import importlib
 import logging
 import traceback
 
+LOG = logging.getLogger(__name__)
+
 class dirRE(object):
 
    def __init__(self,dirREstring):
@@ -46,13 +48,13 @@ class dirRE(object):
 	            if os.path.isdir(cwdir): 
                        subdirs.append(subEntry) 
                     else:
-                       print "Sub-directory match not a directory, ignoring"
+                       LOG.warning("Sub-directory match not a directory, ignoring")
        else:
            cwdir=os.path.join(dir,dirTier)
            if os.path.isdir(cwdir):
               subdirs.append(dirTier) 
            else:
-              print "Dir RE: {} not a sub-directory, or directory reg-expression"
+              LOG.warning("Dir RE: {} not a sub-directory, or directory reg-expression")
               return(1)
     
        for subdir in subdirs:

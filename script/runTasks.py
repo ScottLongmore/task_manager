@@ -178,7 +178,7 @@ while tasks:
 
     except:
         LOG.warning("Unable to complete task, dequeing task and continuing to next task")
-        traceback.print_exc(file=sys.stdout)
+        # traceback.print_exc(file=sys.stdout)
         incompleteTasks.append(task)
 
     # Determine if any new tasks are available

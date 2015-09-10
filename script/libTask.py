@@ -76,8 +76,8 @@ def write_tasks_json_file(jsonFile, tasks):
     -------
     None : NoneType
     """
-    print jsonFile
-    print tasks
+    # print jsonFile
+    # print tasks
     try:
         taskFH = open(jsonFile, "w")
         taskFH.write(json.dumps(tasks, indent=4, skipkeys=True))
