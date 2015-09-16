@@ -1,4 +1,3 @@
-#!/home/cslocum/app/anaconda/bin/python
 # -*- coding: utf-8 -*-
 """
 runTasks.py - creates and runs tasks from a json configuration file, which specifies the plugin task, work, and purge methods
