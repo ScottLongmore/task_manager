@@ -1,4 +1,4 @@
-Task Manager v2.0.1 20150911T12000
+Task Manager v1.0.0 2015-09-24
 
 Scott Longmore - developer
 Chris Slocum - developer
