@@ -1,4 +1,4 @@
-Task Manager v1.0.0 2015-09-24
+Task Queue and Automation System v1.0.0 2015-09-24
 
 Scott Longmore - developer
 Chris Slocum - developer
