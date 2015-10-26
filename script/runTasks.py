@@ -205,7 +205,7 @@ while tasks:
     writeTasks = libTask.sort_tasks(writeTasks, primeTasksKey, workConfig['sortReverseOption'])
     libTask.write_tasks_json_file(config['completeTaskFile'], writeTasks)
     del writeTasks[:]
-
+    LOG.info("Current memory usage: %.2f" % utils.memory_usage())
 
 LOG.info("Tasks Executed:")
 LOG.info("{}".format(libTask.print_tasks_keys_values(executedTasks, primeTasksKey)))

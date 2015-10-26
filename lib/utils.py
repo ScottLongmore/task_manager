@@ -12,6 +12,7 @@ import json
 import logging
 import types
 import struct
+import resource
 
 # Local modules
 import error_codes
@@ -304,3 +305,13 @@ def error(LOG, msg="Unexpected Error:", code=1):
     LOG.exception(msg)
     sys.exit(code)
 
+def memory_usage():
+    """
+    returns the current memory usage of the process
+
+    Returns
+    -------
+    resource.getrusage : float
+        RAM usage in MB
+    """
+    return float(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss ) / 1024.
