@@ -6,16 +6,12 @@ libTask.py - library of routines for handling task...maybe come a module
 # Stock modules
 import sys
 import os
-import re
 import logging
-import traceback
-import datetime
 import collections
 import operator
 import itertools
 import json
 import jsonschema
-import pprint
 
 # Local modules
 import utils
