@@ -8,26 +8,21 @@ runTasks.py - creates and runs tasks from a json configuration file, which speci
 # Stock modules
 import sys
 import os
-import re
 import psutil
 import datetime
 import argparse
-import operator
 import collections
 import copy
 import json
 import jsonschema
 import importlib
 import logging
-import traceback
 
 # Log
 import setup_logging
 
 # Local modules
 import error_codes
-import fileAction
-import dirRE
 import utils
 import libTask
 
