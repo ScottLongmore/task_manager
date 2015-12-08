@@ -1,6 +1,6 @@
 Task Queue and Automation System v1.0.0 2015-09-24
 
-Scott Longmore - developer
+Scott Longmore - developer  
 Chris Slocum - developer
 
 Task Manager is an algorithm automation framework to build tasks for algorithms 
