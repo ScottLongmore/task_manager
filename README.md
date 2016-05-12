@@ -1,6 +1,6 @@
 Task Automation, Queue, and Operational System (TAQOS)
 
-:Keywords: python, task, automation, queue, framework, JSON
+:Keywords: python, task, automation, queue, framework, JSON  
 :Version: 1.0.1  
 :Date: 2015-05-12
 
