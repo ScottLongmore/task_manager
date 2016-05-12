@@ -1,17 +1,20 @@
+======
 Task Automation, Queue, and Operational System (TAQOS)
-
+======
+:Description:  TAQOS is an algorithm automation framework to build tasks for algorithms 
+and execute those algorithms with supplied task data.  
 :Keywords: python, task, automation, queue, framework, JSON  
 :Version: 1.0.1  
-:Date: 2015-05-12
+:Last Update: 2016-05-12  
+:Author: Scott Longmore  
+:E-mail: Scott.Longmore@colostate.edu  
 
-:Development Team:  
+**Development Team**  
 * Scott Longmore - project lead, developer  
 * Chris Slocum - developer
 
-:Overview:  TAQOS is an algorithm automation framework to build tasks for algorithms 
-and execute those algorithms with supplied task data.
-
-:Documentation: The framework currently utilized 3 main components
+**Documentation**  
+The framework currently utilized 3 main components
 * runTasks.py - the automation program the calls configuration specified task plugin module routines
 * [name].json - the JSON configuration for the plugin module
 * plgn[name].py - the plug-in module that defines:
@@ -24,7 +27,7 @@ and execute those algorithms with supplied task data.
                         output: True on success, False on fail 
                 PURGE - purges tasks in <name>_completed.json file, could be used to purge old data as well. 
 
-:Directory Structure:
+**Directory Structure**
 * scripts/ - hosts the runTasks.py, libTasks.py and linked python utility libraries
 * lib/ - utility libraries including:
      - fileAction.py (file search regular expression module) 
