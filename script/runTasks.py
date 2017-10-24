@@ -17,14 +17,24 @@ import json
 import jsonschema
 import importlib
 import logging
+import traceback
 
-# Log
-import setup_logging
+# Set local module paths
+try:
+    exePath=os.path.dirname(os.path.abspath(__file__))
+    parentPath,childDir=os.path.split(exePath)
+    sys.path.insert(1,os.path.join(parentPath,"lib"))
+    sys.path.insert(2,os.path.join(parentPath,"plugins"))
+except:
+   print "Unable to load local library paths"
+   sys.exit(1)
 
 # Local modules
+import setup_logging #LOG
 import error_codes
 import utils
 import libTask
+import taskSchemas
 
 __author__ = 'Scott Longmore'
 __copyright__ = 'Copyright 2015'
@@ -33,10 +43,8 @@ __license__ = 'BSD 3-clause'
 __maintainer__ = 'Scott Longmore'
 __email__ = 'scott.longmore@colostate.edu'
 
-
 # change to the current working directory in cron
-executable_path = os.path.abspath(__file__)
-current_working_directory = os.path.dirname(executable_path)
+current_working_directory = os.path.dirname(exePath)
 os.chdir(current_working_directory)
 
 # setup logging
@@ -47,7 +55,6 @@ LOG = logging.getLogger('runTasks')  # create the logger for this file
 # Variables
 runDTG = datetime.datetime.utcnow()
 ISODTSFormat = "%Y%m%dT%H%M%S"
-schema_task = json.load(open('schema_task.json', 'r'), object_pairs_hook=collections.OrderedDict)
 
 # Determine if process is running, or in zombie state
 cpid = os.getpid()
@@ -81,7 +88,7 @@ try:
     LOG.info("Processing JSON config file: {}".format(config_filename))
     config = json.load(open(config_filename), object_pairs_hook=collections.OrderedDict)
 
-    validator = jsonschema.Draft4Validator(schema_task)
+    validator = jsonschema.Draft4Validator(taskSchemas.taskSchema)
     errs = sorted(validator.iter_errors(config), key=lambda e: e.path)
 
     if errs:
@@ -172,7 +179,7 @@ while tasks:
 
     except:
         LOG.warning("Unable to complete task, dequeing task and continuing to next task")
-        # traceback.print_exc(file=sys.stdout)
+        traceback.print_exc(file=sys.stdout)
         incompleteTasks.append(task)
 
     # Determine if any new tasks are available

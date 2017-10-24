@@ -1,4 +1,4 @@
-{
+taskSchema={
     "$schema": "http://json-schema.org/draft-04/schema#", 
     "required": [
         "name", 
@@ -73,4 +73,13 @@
             "type": "string"
         }
     }
+}
+
+completedSchema={
+    "items": {
+        "type": "object"
+    }, 
+    "$schema": "http://json-schema.org/draft-04/schema#", 
+    "type": "array", 
+    "description": "task schema"
 }

@@ -15,13 +15,17 @@ import collections
 import operator
 import subprocess
 import shutil
+import pprint
 
 # Local modules
+import utils
 import error_codes
 import fileAction
 import dirRE
 
 LOG = logging.getLogger(__name__)  # create the logger for this file
+
+pp = pprint.PrettyPrinter(indent=2)
 
 # Parameters
 DTSFormat = "%Y%m%d%H%M%S"
@@ -89,25 +93,27 @@ def TASKS(config):
 
         if inputs['period']-inputs['epsilon'] <= delta.total_seconds() <= inputs['period']+inputs['epsilon']:
            task={
-                 'DTS':DTG.strftime(ISODTSFormat),
+                 'DTS':eDTG.strftime(ISODTSFormat),
 		 'sDTS':sDTG.strftime(ISODTSFormat),
 		 'eDTS':eDTG.strftime(ISODTSFormat),
                  'sFile':fileDTGs[sDTG],
                  'eFile':fileDTGs[eDTG]
                 }
            tasks.append(task)
-           LOG.info("For task: {}".format(DTS))
-	   LOG.info("Adding start File: {}".format(task['sFile'])) 
-           LOG.info("Adding end File: {}".format(task['eFile']))
+           #LOG.info("For task: {}".format(task['eDTS']))
+	   #LOG.info("Adding start File: {}".format(task['sFile'])) 
+           #LOG.info("Adding end File: {}".format(task['eFile']))
         else:
            LOG.warning("Delta: {} out of range".format(delta.total_seconds()))
            LOG.warning("For file: {}".format(fileDTGs[sDTG]))
            LOG.warning("And file: {}".format(fileDTGs[eDTG]))
 
     # Remove any older tasks than backward search datetime
+    LOG.info("Initial {} TASKS created: [{}]".format(config['name'],len(tasks)))
+
     tasks = PURGE(config, tasks)
 
-    LOG.info("Completed {} TASKS creation".format(config['name']))
+    LOG.info("{} TASKS created: [{}]".format(config['name'],len(tasks)))
     return(tasks)
 
 
@@ -131,81 +137,59 @@ def WORK(config, task):
     taskDTG=datetime.datetime.strptime(task['DTS'],ISODTSFormat)
   
     LOG.info("Starting {} WORK for task: {}".format(config['name'],task['DTS']))
-
     status = True 
-    return(status)
 
     # Create work directory 
     workDir=os.path.join(str(config['workDirRoot']),task['DTS'])
-    tdfDir=str(config['workDirRoot'])
-    if not os.path.exists(workDir):
-       LOG.info('Creating working directory: {}'.format(workDir))
-       try:
-           os.makedirs(workDir)
-       except:
-           LOG.warning("Unable to create work dir {}".format(workDir))
-           status=False
-           return(status)
+    inputDir=os.path.join(workDir,'input')
+    utils.workDir(inputDir)
 
     # CD to work directory
-    try:
-        LOG.info('Changing to working directory: {}'.format(workDir))
-        os.chdir(workDir)
-    except:
-        LOG.warning("Unable to change to work dir: {}".format(workDir))
-        status=False
-        return(status)
+    utils.cdDir(workDir)
 
     # Link task image files to working directory
+    try:
+        LOG.info("Linking start image file: {}".format(task['sFile']))
+        utils.linkFile(os.path.dirname(task['sFile']),os.path.basename(task['sFile']),inputDir)
+        LOG.info("Linking end image file: {}".format(task['eFile']))
+        utils.linkFile(os.path.dirname(task['eFile']),os.path.basename(task['eFile']),inputDir)
+    except:
+        LOG.warning("Unable to link image files")
+        status=False
+        return(status)
 
     # Executing createBFImages
     try:
-        commandList=[plugin['pythonExe'],plugin['createBFImagesExe']]
-        commandArgs=['-c',plugin['createBFImagesCfg'],'-t',plugin['timeStep'],'-f',inputs['fileFormat'],'-s',workDir,'-o'
+        commandList=map(str,(plugin['pythonExe'],plugin['createBFImagesExe']))
+        commandArgs=map(str,('-c',plugin['createBFImagesCfg'],'-t',plugin['timeStep'],'-f',inputs['fileFormat'],'-s',inputDir,'-o',workDir))
         commandID=taskDTG.strftime(DTSFormat)
-        if not execute(commandList,commandArgs,commandID,workDir):
-            LOG.warning("Execute failed for {}".format(plugin['DEBRAScp']))
-            status=False
-            return(status)
-
-
+        LOG.info("Executing: {}".format(" ".join(commandList+commandArgs)))
+        status=utils.execute(commandList,commandArgs,commandID,workDir)
     except:
-
-def execute(commandList,commandArgs,commandID,workDir):
-
-    command=commandList[-1]
-
-    commandLine=[]
-    commandLine.extend(commandList)
-    commandLine.extend(commandArgs)
-
-    status=True
-    try:
-        base, ext =os.path.splitext(os.path.basename(command))
-        outFile=os.path.join(workDir,"{}_{}.stdout".format(base,commandID))
-        errFile=os.path.join(workDir,"{}_{}.stderr".format(base,commandID))
-        outfh=open(outFile,'w')
-        errfh=open(errFile,'w')
-        LOG.info("STDOUT File: {}".format(outFile))
-        LOG.info("STDERR File: {}".format(errFile))
-        LOG.info("Subprocess Executing: {}".format(" ".join(commandLine)))
-        retcode = subprocess.call(commandLine, stdout=outfh, stderr=errfh)
-        outfh.close()
-        errfh.close()
-        if(retcode < 0):
-            LOG.warning("Subprocess: {} terminated by signal {}".format(command,retcode))
-            status=False
-            return(status)
-        elif(retcode > 0):
-            LOG.warning("Subprocess: {} returned with exit code {}".format(command,retcode))
-            status=False
-            return(status)
-        else:
-            LOG.info("Subprocess: {} completed normally".format(command))
-    except OSError as e:
-        LOG.warning("Subprocess: {} failed".format(command))
+        LOG.warning("Unable to execute: {}".format(" ".join(map(str,(commandList+commandArgs))))) 
         status=False
         return(status)
+
+    if not status:
+        LOG.warning("Execute failed for {}".format(plugin['createBFImagesExe']))
+        status=False
+        return(status)
+
+    # Move created images to image directory
+    inputName=config['name']
+    outputs={
+      "inputs": {
+        inputName: {
+          "dirs":[workDir],
+          "re":inputs['re']
+        }
+      }
+    }
+    FA = fileAction.fileAction(outputs)
+    filepaths = FA.findInputFiles([inputName])[inputName]
+    for filepath in filepaths:
+        LOG.info("Linking output image file: {} to {}".format(os.path.basename(filepath),plugin['imageDir']))
+        utils.linkFile(os.path.dirname(filepath),os.path.basename(filepath),plugin['imageDir'])
 
     return(status)
 

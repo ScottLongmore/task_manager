@@ -77,7 +77,7 @@ class fileAction(object):
             input=self.config['inputs'][inputKey]
     
             # Replace dir/re templates (%string) with replace section values to narrow input searches
-            if self.config['replace']:
+            if 'replace' in self.config:
                # print json.dumps(self.config['replace'],indent=4)
                newDirs=[]
                for dir in input['dirs']:

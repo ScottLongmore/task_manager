@@ -12,8 +12,9 @@
      "work":"WORK",
      "pythonExe":"/home/slongmore/local/anaconda2/bin/python",
      "createBFImagesExe":"/home/slongmore/Projects/butterflow/dev/createBFImages/createBFImages.py",
-     "createGFImagesCfg":"/home/slongmore/Projects/butterflow/dev/createBFImages/createBFImages.json",
-     "timeStep":60
+     "createBFImagesCfg":"/home/slongmore/Projects/butterflow/dev/createBFImages/createBFImages.json",
+     "timeStep":60,
+     "imageDir":"/mnt/data1/butterflow/runs/dev/images"
   },
   "meta": {
     "#bkwdDelta": 43200,
@@ -30,7 +31,7 @@
       "re":"^geocolor_(?P<DTS>\\d{14}).jpg$",
       "period":300,
       "epsilon":15,
-      "fileFormat":"geocolor_%%Y%%m%%d%%H%%M%%S.jpg"
+      "fileFormat":"geocolor_%Y%m%d%H%M%S.jpg"
     }
   }
 }

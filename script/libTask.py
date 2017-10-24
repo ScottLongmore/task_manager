@@ -16,6 +16,7 @@ import jsonschema
 # Local modules
 import utils
 import error_codes
+import taskSchemas
 
 # change to the current working directory in cron
 executable_path = os.path.abspath(__file__)
@@ -45,7 +46,7 @@ def read_tasks_json_file(jsonFile):
     try:
         LOG.info("Processing task list JSON file: {}".format(jsonFile))
         tasks = json.load(open(jsonFile, 'r'), object_pairs_hook=collections.OrderedDict)
-        validator = jsonschema.Draft4Validator(schema_completed)
+        validator = jsonschema.Draft4Validator(taskSchemas.completedSchema)
         errs = sorted(validator.iter_errors(tasks), key=lambda e: e.path)
         if errs:
             msg = ''
