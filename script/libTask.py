@@ -25,10 +25,6 @@ os.chdir(current_working_directory)
 
 LOG = logging.getLogger(__name__)
 
-schema_completed = json.load(open("./schema_completed.json", 'r'),
-                             object_pairs_hook=collections.OrderedDict)
-
-
 def read_tasks_json_file(jsonFile):
     """
     Read Task list JSON file
