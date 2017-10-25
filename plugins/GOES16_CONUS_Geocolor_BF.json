@@ -11,8 +11,8 @@
      "tasks":"TASKS",
      "work":"WORK",
      "pythonExe":"/home/slongmore/local/anaconda2/bin/python",
-     "createBFImagesExe":"/home/slongmore/Projects/butterflow/dev/createBFImages/createBFImages.py",
-     "createBFImagesCfg":"/home/slongmore/Projects/butterflow/dev/createBFImages/createBFImages.json",
+     "createBFImagesExe":"/home/slongmore/Projects/butterflow/dev/createBFImages/script/createBFImages.py",
+     "createBFImagesCfg":"/home/slongmore/Projects/butterflow/dev/createBFImages/etc/createBFImages.json",
      "timeStep":60,
      "imageDir":"/mnt/data1/butterflow/runs/dev/images"
   },
