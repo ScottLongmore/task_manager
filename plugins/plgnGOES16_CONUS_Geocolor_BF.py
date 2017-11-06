@@ -188,8 +188,21 @@ def WORK(config, task):
     FA = fileAction.fileAction(outputs)
     filepaths = FA.findInputFiles([inputName])[inputName]
     for filepath in filepaths:
-        LOG.info("Linking output image file: {} to {}".format(os.path.basename(filepath),plugin['imageDir']))
-        utils.linkFile(os.path.dirname(filepath),os.path.basename(filepath),plugin['imageDir'])
+        try:
+            m = re.match(inputs['re'], os.path.basename(filepath))
+            fields = m.groupdict()
+            fileDTS = fields['DTS']
+            fileDTG=datetime.datetime.strptime(fileDTS,DTSFormat)
+        except:
+            LOG.warning("Unable to extract datetime from image output file: {}".format(filepath))
+            status=False
+            return(status)
+        imageDir=os.path.join(plugin['imageDir'],fileDTG.strftime("%Y%m%d"))
+        if not os.path.exists(imageDir):
+            utils.workDir(imageDir)
+           
+        LOG.info("Linking output image file: {} to {}".format(os.path.basename(filepath),imageDir))
+        utils.linkFile(os.path.dirname(filepath),os.path.basename(filepath),imageDir)
 
     return(status)
 
