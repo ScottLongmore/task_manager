@@ -141,8 +141,10 @@ def WORK(config, task):
 
     # Create work directory 
     workDir=os.path.join(str(config['workDirRoot']),task['DTS'])
-    inputDir=os.path.join(workDir,'input')
+    inputDir=os.path.join(workDir,plugin['inputSubDir'])
     utils.workDir(inputDir)
+    outputDir=os.path.join(workDir,plugin['outputSubDir'])
+    utils.workDir(outputDir)
 
     # CD to work directory
     utils.cdDir(workDir)
@@ -161,7 +163,7 @@ def WORK(config, task):
     # Executing createBFImages
     try:
         commandList=map(str,(plugin['pythonExe'],plugin['createBFImagesExe']))
-        commandArgs=map(str,('-c',plugin['createBFImagesCfg'],'-t',plugin['timeStep'],'-f',inputs['fileFormat'],'-s',inputDir,'-o',workDir))
+        commandArgs=map(str,('-c',plugin['createBFImagesCfg'],'-t',plugin['timeStep'],'-f',inputs['fileFormat'],'-s',inputDir,'-o',outputDir))
         commandID=taskDTG.strftime(DTSFormat)
         LOG.info("Executing: {}".format(" ".join(commandList+commandArgs)))
         status=utils.execute(commandList,commandArgs,commandID,workDir)
