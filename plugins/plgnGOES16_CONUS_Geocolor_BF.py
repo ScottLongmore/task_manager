@@ -182,7 +182,7 @@ def WORK(config, task):
     outputs={
       "inputs": {
         inputName: {
-          "dirs":[workDir],
+          "dirs":[outputDir],
           "re":inputs['re']
         }
       }
