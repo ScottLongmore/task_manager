@@ -75,7 +75,7 @@ def TASKS(config):
     workConfig=copy.deepcopy(config)
     workGeocolor = workConfig['inputs'][inputId]
 
-    compImages=[]
+    compImages={}
     for dirpath in dirpaths:
 
         # Determine if dirpath DTG is beyond backDTG
@@ -146,17 +146,17 @@ def TASKS(config):
                               "image2":outputFilepath,
                               "title2":outputDTG.strftime("%Y-%m-%d %H:%M:%S")
                     }
-                    compImages.append(compImage)
+                    compImages[outputDTG]=compImage
                     
             else:
                 LOG.warning("Start and end datetimes not initialized for {}, continuing".format(dirpath))
                 continue
- 
+
     # Create task for current run
     tasks = []
     task={
          'DTS':meta['runDTG'].strftime(ISODTSFormat),
-         'images':compImages
+         'images':[compImages[key] for key in sorted(compImages.keys())]
     }
     tasks.append(task)
 
