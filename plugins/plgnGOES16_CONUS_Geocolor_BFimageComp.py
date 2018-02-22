@@ -63,12 +63,14 @@ def TASKS(config):
     config : dict
     """
     meta = config['meta']
+    plugin=config['plugin']
+    imageConfig=plugin['imageCompConfig']
+    inputId='GOES16_CONUS_Geocolor_BF'
+    inputs = config['inputs'][inputId]
    
     LOG.info("Starting {} TASKS creation".format(config['name']))
 
     # Get geocolor butterflow working directories 
-    inputId='GOES16_CONUS_Geocolor_BF'
-    inputs = config['inputs'][inputId]
     geoColorDirRE=dirRE.dirRE(inputs['dirs'][0])
     dirpaths=geoColorDirRE.getDirs()
 
@@ -116,7 +118,8 @@ def TASKS(config):
                     inputMatch=re.match(workGeocolor['re'],os.path.basename(inputFilepath))
                     inputFields=inputMatch.groupdict()
                     dtg=datetime.datetime.strptime(inputFields['DTS'],DTSFormat)
-                    if not startDTG:
+		    imageConfig['pfx']=inputFields['pfx']
+		    if not startDTG:
                        startDTG = dtg
                        startFilepath=inputFilepath
                     elif dtg < startDTG:
@@ -140,12 +143,27 @@ def TASKS(config):
                     outputMatch=re.match(inputs['re'],os.path.basename(outputFilepath))
                     outputFields=outputMatch.groupdict()
                     outputDTG=datetime.datetime.strptime(outputFields['DTS'],DTSFormat)
+                    startDTS=startDTG.strftime("%Y-%m-%d %H:%M:%S")
+                    outputDTS=outputDTG.strftime("%Y-%m-%d %H:%M:%S")
+                    
+
+                    compFile="{}_{}_{}_{}.{}".format(imageConfig['pfx'],\
+                                                     imageConfig['sectorName'],\
+                                                     startDTG.strftime(DTSFormat),\
+                                                     outputDTG.strftime(DTSFormat),\
+                                                     outputFields['ext'])
+                    imageConfig['imageFileRE']='^{}_{}_{}_{}\.{}$'.format(imageConfig['pfx'],\
+                                                                          imageConfig['sectorName'],\
+                                                                          '(?P<DTS1>\d{14})',\
+                                                                          '(?P<DTS2>\d{14})',\
+                                                                          outputFields['ext'])
                     compImage={
                               "image1":startFilepath,
-                              "title1":startDTG.strftime("%Y-%m-%d %H:%M:%S"),
+                              "title1":"{} Original".format(startDTS),
                               "image2":outputFilepath,
-                              "title2":outputDTG.strftime("%Y-%m-%d %H:%M:%S")
-                    }
+                              "title2":"{} Butterflow".format(outputDTS),
+                              "outputFile":compFile
+                              }
                     compImages[outputDTG]=compImage
                     
             else:
@@ -203,7 +221,10 @@ def WORK(config, task):
     # Write image comparison configuration file
     imageConfig=copy.deepcopy(plugin['imageCompConfig'])
     imageConfig['workDir']=workDir
-    imageConfig['ffmpeg']['imagesToMovieOpts']['movie']="{}.{}".format(task['DTS'],imageConfig['ffmpeg']['imagesToMovieOpts']['movie'])
+    imageConfig['ffmpeg']['imagesToMovieOpts']['movie']="{}_{}_{}.{}".format(imageConfig['pfx'],
+                                                                             imageConfig['sectorName'],
+                                                                             task['DTS'],
+                                                                             imageConfig['ffmpeg']['imagesToMovieOpts']['movie'])
     imageConfigFile="{}_config.json".format(task['DTS'])
     imageConfigFilepath=os.path.join(workDir,imageConfigFile)
     imageConfigFH=open(imageConfigFilepath,'w')
@@ -234,36 +255,42 @@ def WORK(config, task):
         status=False
         return(status)
 
-    '''
-    # Move created images to image directory
-    inputName=config['name']
+    # Link created images to composite image directory
+    compName='compFiles'
+    LOG.info('RE: {}'.format(imageConfig['imageFileRE']))
+    LOG.info('workDir: {}'.format(workDir))
     outputs={
       "inputs": {
-        inputName: {
+        compName: {
           "dirs":[workDir],
-          "re":inputs['re']
+          "re":imageConfig['imageFileRE']
         }
       }
     }
     FA = fileAction.fileAction(outputs)
-    filepaths = FA.findInputFiles([inputName])[inputName]
+    filepaths = FA.findInputFiles([compName])[compName]
     for filepath in filepaths:
         try:
-            m = re.match(inputs['re'], os.path.basename(filepath))
+            m = re.match(imageConfig['imageFileRE'], os.path.basename(filepath))
             fields = m.groupdict()
-            fileDTS = fields['DTS']
+            fileDTS = fields['DTS1']
             fileDTG=datetime.datetime.strptime(fileDTS,DTSFormat)
         except:
             LOG.warning("Unable to extract datetime from image output file: {}".format(filepath))
+            traceback.print_exc(file=sys.stderr)
             status=False
             return(status)
+
         imageDir=os.path.join(plugin['imageDir'],fileDTG.strftime("%Y%m%d"))
         if not os.path.exists(imageDir):
             utils.workDir(imageDir)
            
         LOG.info("Linking output image file: {} to {}".format(os.path.basename(filepath),imageDir))
         utils.linkFile(os.path.dirname(filepath),os.path.basename(filepath),imageDir)
-    '''
+
+    # Link created movie to composite image directory
+    movieDir=os.path.join(plugin['movieDir'])
+    utils.linkFile(workDir,imageConfig['ffmpeg']['imagesToMovieOpts']['movie'],movieDir)
 
     return(status)
 

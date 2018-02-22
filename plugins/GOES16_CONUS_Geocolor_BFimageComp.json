@@ -13,9 +13,9 @@
      "pythonExe":"/home/slongmore/local/anaconda2/bin/python",
      "imageCompExe":"/home/slongmore/Projects/butterflow/dev/imageComp/script/imageComp.py",
      "imageCompConfig":{ 
-       "filePattern":"^(?P<pfx>geocolor)_(?P<uid>\\d{14}).(?P<ext>jpg)$",
        "imageType":"JPEG",
        "workDir":null,
+       "sectorName":"Colorado",
        "crop":{
          "left":1050,
          "upper":650,
@@ -32,7 +32,8 @@
          }
        }
      },
-     "imageDir":"/mnt/data1/butterflow/runs/dev/compImages"
+     "imageDir":"/mnt/data1/butterflow/runs/dev/compImages",
+     "movieDir":"/mnt/data1/butterflow/runs/dev/compMovies"
   },
   "meta": {
     "bkwdDelta": 3600,
@@ -45,10 +46,10 @@
   "inputs": {
     "GOES16_CONUS_Geocolor_BF": {
       "dirs":["/mnt/data1/butterflow/runs/ops/work/^(?P<ISODTS>\\d{8}T\\d{6})$"],
-      "re":"^geocolor_(?P<DTS>\\d{14}).jpg$",
+      "re":"^(?P<pfx>geocolor)_(?P<DTS>\\d{14}).(?P<ext>jpg)$",
       "fileFormat":"geocolor_%Y%m%d%H%M%S.jpg",
       "inputSubDir":"input",
-      "outputSubDir":"."
+      "outputSubDir":"output"
     }
   }
 }
