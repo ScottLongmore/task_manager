@@ -1,0 +1,91 @@
+{
+  "name":"DNB-destripe_ALASKA",
+  "workDirRoot":"/mnt/data1/DNB-destripe/ALASKA/",
+  "logDir":"/local/home/viirs/Projects/DNB-destripe/ops/DNB-destripe/log/ALASKA/",
+  "statFile":"/local/home/viirs/Projects/DNB-destripe/ops/DNB-destripe/log/ALASKA/stat.log",
+  "completeTaskFile":"/local/home/viirs/Projects/DNB-destripe/ops/DNB-destripe/etc/DNB-destripe_ALASKA_complete.json",
+  "primeTasksKey":"DTS",
+  "sortReverseOption":true,
+  "meta": {
+    "bkwdDelta":86400,
+    "DTGfrmts": {}
+  },
+  "inputs": {
+    "SVDNB": {
+      "dirs":["/mnt/NPPData/ALASKA/SVDNB/"],
+      "re":"^SVDNB_npp_d(?P<Date>\\d{8})_t(?P<BeginTime>\\d{7})_e(?P<EndTime>\\d{7})_b(?P<Orbit>\\d{5})_c(?P<CreateDTG>\\d{20})_(?P<ext>\\w+)\\.h5$"
+    },
+    "GDNBO": {
+      "dirs":["/mnt/NPPData/ALASKA/GDNBO/"],
+      "re":"^GDNBO_npp_d(?P<Date>\\d{8})_t(?P<BeginTime>\\d{7})_e(?P<EndTime>\\d{7})_b(?P<Orbit>\\d{5})_c(?P<CreateDTG>\\d{20})_(?P<ext>\\w+)\\.h5$"
+    }
+  },
+  "plugin": {
+    "module":"plgnDNBdestripe",
+    "purge":"PURGE",
+    "tasks":"TASKS",
+    "work":"WORK",
+    "pythonEXE":"/home/viirs/local/anaconda3/bin/python",
+    "DNBdestripeGranuleEXE":"/local/home/viirs/Projects/DNB-destripe/ops/DNB-destripe/scripts/destripe/DNBdestripeTestPerGranule.py",
+    "SZADayNightThreshold":108.0,
+    "SolarZenithAngle":{
+      "0.0":{
+        "name":"day",
+        "prcnt_ptlim":[2,98],
+        "uniformity":0.5,
+        "nhist":6,
+        "excldZones":[],
+        "del_lo":1.0e-4,
+        "Lhi":1.0e-1,
+        "Llo":1.0e-4,
+        "Loffref":2.0e-4
+      },
+     "108.0":{
+        "name":"night",
+        "prcnt_ptlim":[2,98],
+        "uniformity":0.5,
+        "nhist":6,
+        "excldZones":[],
+        "del_lo":1.0e-4,
+        "Lhi":1.0e-1,
+        "Llo":1.0e-4,
+        "Loffref":2.0e-4
+      }
+    },
+    "MoonPhaseAngle":{
+      "45.0":{
+        "name":"full",
+        "prcnt_ptlim":[2,98],
+        "uniformity":0.5,
+        "nhist":6,
+        "excldZones":[],
+        "del_lo":1.0e-10,
+        "Lhi":1.0e-7,
+        "Llo":-2.0e-10,
+        "Loffref":1.0e-9
+      },
+      "135.0":{
+        "name":"quarter",
+        "prcnt_ptlim":[2,98],
+        "uniformity":0.5,
+        "nhist":6,
+        "excldZones":[],
+        "del_lo":1.0e-10,
+        "Lhi":1e-8,
+        "Llo":-2.0e-10,
+        "Loffref":1.0e-10
+      },
+      "180.0":{
+        "name":"new",
+        "prcnt_ptlim":[2,98],
+        "uniformity":0.5,
+        "nhist":6,
+        "excldZones":[16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47],
+        "del_lo":1.0e-10,
+        "Lhi":3.0e-9,
+        "Llo":-2.0e-10,
+        "Loffref":1.0e-10
+      }
+    }
+  }
+}
