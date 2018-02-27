@@ -1,11 +1,11 @@
 ======
 Task Automation, Queue, and Operational System (TAQOS)
 ======
-:Description:  TAQOS is an algorithm automation framework to build tasks for algorithms 
+:Description: TAQOS is an algorithm automation framework to build tasks for algorithms 
 and execute those algorithms with supplied task data.  
 :Keywords: python, task, automation, queue, framework, JSON  
-:Version:1.0.1  
-:Last Edit: 2016-05-12  
+:Version:1.0.2  
+:Last Edit: 2017-10-24 
 :Author: Scott Longmore, Cooperative Institute for Research in the Atmosphere (CIRA)  
 :Contact: Scott.Longmore@colostate.edu  
 
