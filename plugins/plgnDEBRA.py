@@ -134,9 +134,17 @@ def WORK(config, task):
     taskDTG=datetime.datetime.strptime(task['DTS'],ISODTSFormat)
 
     # Create work directory 
-    workDir=os.path.join(str(config['workDirRoot']),task['DTS'])
+    workDir=os.path.join(str(config['workDirRoot']),'work',task['DTS'])
     tdfDir=str(config['workDirRoot'])
-    if not os.path.exists(workDir):
+    if os.path.exists(workDir):
+       LOG.info('Working directory already exists, incomplete job?, removing: {}'.format(workDir))
+       try:
+           shutil.rmtree(workDir)
+       except:
+           LOG.warning("Unable to remove previous work dir {}".format(workDir))
+           status=False
+           return(status)
+    else:
        LOG.info('Creating working directory: {}'.format(workDir))
        try:
            os.makedirs(workDir)
@@ -208,7 +216,7 @@ def WORK(config, task):
 
     # Run DEBRA processing script 
     commandList=[plugin['DEBRAScp']]
-    commandArgs=[tdfFile]
+    commandArgs=[tdfFilePath]
     commandID=taskDTG.strftime(DTSFormat)
     if not execute(commandList,commandArgs,commandID,workDir):
         LOG.warning("Execute failed for {}".format(plugin['DEBRAScp']))

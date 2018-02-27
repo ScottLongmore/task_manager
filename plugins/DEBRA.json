@@ -12,17 +12,17 @@
      "work":"WORK",
      "XPIFToBinExe":"/local/home/slongmore/Projects/DEBRA/dev/DEBRA/bin/MSG_MAIN",
      "BinToTDFScp":"/local/home/slongmore/Projects/DEBRA/dev/DEBRA/scripts/CONV_MSG3_BIN2TDF.pl",
-     "DEBRAScp":"/local/home/smiller/DEBRA/MSG_DEBRA/msg_dust_DEBRA_driver_CIRA_FEED.pl"
+     "DEBRAScp":"/local/home/slongmore/Projects/DEBRA/dev/DEBRA/scripts/msg_dust_DEBRA_driver_CIRA_FEED.pl"
   },
   "meta": {
-    "bkwdDelta": 900,
+    "bkwdDelta": 10000000,
     "DTGfrmts": {
       "Y":"%Y"
     }
   },
   "inputs": {
     "MSG": {
-      "dirs":["/local/home/slongmore/Projects/DEBRA/data/test"],
+      "dirs":["/local/home/slongmore/Projects/DEBRA/data/2016_216"],
       "re":"^(?P<DTS>\\d{4}_\\d{3}_\\d{4})_MSG03(_\\d{14})*.zip$"
     }
   }
