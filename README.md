@@ -1,4 +1,3 @@
-======
 Task Automation, Queue, and Operational System (TAQOS)
 ======
 :Description: TAQOS is an algorithm automation framework to build tasks for algorithms 
