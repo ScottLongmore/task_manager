@@ -1,0 +1,450 @@
+[
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t1545287_e1546529_b23087_c20160411163629123567_cspp_dev.h5", 
+        "beginTime": "154517", 
+        "timeFrame": "t1545287_e1546529", 
+        "DTS": "20160411T154517", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t1545287_e1546529_b23087_c20160411163615369449_cspp_dev.h5", 
+        "endTime": "154632"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t1544033_e1545275_b23087_c20160411163610935742_cspp_dev.h5", 
+        "beginTime": "15442", 
+        "timeFrame": "t1544033_e1545275", 
+        "DTS": "20160411T154402", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t1544033_e1545275_b23087_c20160411163601032431_cspp_dev.h5", 
+        "endTime": "154517"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t1542377_e1544021_b23087_c20160411163329337629_cspp_dev.h5", 
+        "beginTime": "154223", 
+        "timeFrame": "t1542377_e1544021", 
+        "DTS": "20160411T154223", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t1542377_e1544021_b23087_c20160411163319891489_cspp_dev.h5", 
+        "endTime": "15441"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t1404285_e1405527_b23086_c20160411153655207703_cspp_dev.h5", 
+        "beginTime": "140417", 
+        "timeFrame": "t1404285_e1405527", 
+        "DTS": "20160411T140417", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t1404285_e1405527_b23086_c20160411153639681136_cspp_dev.h5", 
+        "endTime": "140532"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t1403031_e1404273_b23086_c20160411153707094063_cspp_dev.h5", 
+        "beginTime": "14032", 
+        "timeFrame": "t1403031_e1404273", 
+        "DTS": "20160411T140302", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t1403031_e1404273_b23086_c20160411153704562485_cspp_dev.h5", 
+        "endTime": "140416"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t1401374_e1403019_b23086_c20160411153648643477_cspp_dev.h5", 
+        "beginTime": "140122", 
+        "timeFrame": "t1401374_e1403019", 
+        "DTS": "20160411T140122", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t1401374_e1403019_b23086_c20160411153639673915_cspp_dev.h5", 
+        "endTime": "14031"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t1232008_e1233250_b23085_c20160411134431218123_cspp_dev.h5", 
+        "beginTime": "12320", 
+        "timeFrame": "t1232008_e1233250", 
+        "DTS": "20160411T123200", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t1232008_e1233250_b23085_c20160411134430324771_cspp_dev.h5", 
+        "endTime": "123315"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t1222028_e1223271_b23085_c20160411133748248477_cspp_dev.h5", 
+        "beginTime": "12222", 
+        "timeFrame": "t1222028_e1223271", 
+        "DTS": "20160411T122202", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t1222028_e1223271_b23085_c20160411133741608093_cspp_dev.h5", 
+        "endTime": "122316"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t1051006_e1052250_b23084_c20160411114222192313_cspp_dev.h5", 
+        "beginTime": "10510", 
+        "timeFrame": "t1051006_e1052250", 
+        "DTS": "20160411T105100", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t1051006_e1052250_b23084_c20160411114221265682_cspp_dev.h5", 
+        "endTime": "105215"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t0026327_e0027571_b23078_c20160411014006161282_cspp_dev.h5", 
+        "beginTime": "002620", 
+        "timeFrame": "t0026327_e0027571", 
+        "DTS": "20160411T002620", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t0026327_e0027571_b23078_c20160411014005818638_cspp_dev.h5", 
+        "endTime": "002734"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t0025073_e0026315_b23078_c20160411013347658844_cspp_dev.h5", 
+        "beginTime": "00254", 
+        "timeFrame": "t0025073_e0026315", 
+        "DTS": "20160411T002504", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t0025073_e0026315_b23078_c20160411013347304550_cspp_dev.h5", 
+        "endTime": "002619"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t0023419_e0025061_b23078_c20160411013357547870_cspp_dev.h5", 
+        "beginTime": "002325", 
+        "timeFrame": "t0023419_e0025061", 
+        "DTS": "20160411T002325", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t0023419_e0025061_b23078_c20160411013343686206_cspp_dev.h5", 
+        "endTime": "00254"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t0022165_e0023407_b23078_c20160411013408102507_cspp_dev.h5", 
+        "beginTime": "002210", 
+        "timeFrame": "t0022165_e0023407", 
+        "DTS": "20160411T002210", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t0022165_e0023407_b23078_c20160411013404534167_cspp_dev.h5", 
+        "endTime": "002324"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t0020511_e0022153_b23078_c20160411013436370022_cspp_dev.h5", 
+        "beginTime": "002031", 
+        "timeFrame": "t0020511_e0022153", 
+        "DTS": "20160411T002031", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t0020511_e0022153_b23078_c20160411013425262935_cspp_dev.h5", 
+        "endTime": "00229"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160411_t0019255_e0020499_b23078_c20160411013320826145_cspp_dev.h5", 
+        "beginTime": "001915", 
+        "timeFrame": "t0019255_e0020499", 
+        "DTS": "20160411T001915", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160411_t0019255_e0020499_b23078_c20160411013308950203_cspp_dev.h5", 
+        "endTime": "002030"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2246580_e2248224_b23077_c20160410234100160330_cspp_dev.h5", 
+        "beginTime": "224635", 
+        "timeFrame": "t2246580_e2248224", 
+        "DTS": "20160410T224635", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2246580_e2248224_b23077_c20160410234052560808_cspp_dev.h5", 
+        "endTime": "224813"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2245326_e2246567_b23077_c20160410234135218895_cspp_dev.h5", 
+        "beginTime": "224520", 
+        "timeFrame": "t2245326_e2246567", 
+        "DTS": "20160410T224520", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2245326_e2246567_b23077_c20160410234129548425_cspp_dev.h5", 
+        "endTime": "224634"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2244071_e2245313_b23077_c20160410234224633814_cspp_dev.h5", 
+        "beginTime": "22444", 
+        "timeFrame": "t2244071_e2245313", 
+        "DTS": "20160410T224404", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2244071_e2245313_b23077_c20160410234224337024_cspp_dev.h5", 
+        "endTime": "224519"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2242417_e2244059_b23077_c20160410233435522182_cspp_dev.h5", 
+        "beginTime": "224225", 
+        "timeFrame": "t2242417_e2244059", 
+        "DTS": "20160410T224225", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2242417_e2244059_b23077_c20160410233426046825_cspp_dev.h5", 
+        "endTime": "22444"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2241163_e2242405_b23077_c20160410233352516719_cspp_dev.h5", 
+        "beginTime": "224110", 
+        "timeFrame": "t2241163_e2242405", 
+        "DTS": "20160410T224110", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2241163_e2242405_b23077_c20160410233346589811_cspp_dev.h5", 
+        "endTime": "224224"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2239509_e2241151_b23077_c20160410233347965821_cspp_dev.h5", 
+        "beginTime": "223931", 
+        "timeFrame": "t2239509_e2241151", 
+        "DTS": "20160410T223931", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2239509_e2241151_b23077_c20160410233334191398_cspp_dev.h5", 
+        "endTime": "22419"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2238255_e2239497_b23077_c20160410233220993354_cspp_dev.h5", 
+        "beginTime": "223815", 
+        "timeFrame": "t2238255_e2239497", 
+        "DTS": "20160410T223815", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2238255_e2239497_b23077_c20160410233212506301_cspp_dev.h5", 
+        "endTime": "223930"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2237001_e2238243_b23077_c20160410233157949950_cspp_dev.h5", 
+        "beginTime": "22370", 
+        "timeFrame": "t2237001_e2238243", 
+        "DTS": "20160410T223700", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2237001_e2238243_b23077_c20160410233141713654_cspp_dev.h5", 
+        "endTime": "223815"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2105578_e2107220_b23076_c20160410214148785838_cspp_dev.h5", 
+        "beginTime": "210535", 
+        "timeFrame": "t2105578_e2107220", 
+        "DTS": "20160410T210535", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2105578_e2107220_b23076_c20160410214148117761_cspp_dev.h5", 
+        "endTime": "210713"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2104324_e2105565_b23076_c20160410214021920135_cspp_dev.h5", 
+        "beginTime": "210419", 
+        "timeFrame": "t2104324_e2105565", 
+        "DTS": "20160410T210419", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2104324_e2105565_b23076_c20160410214021597250_cspp_dev.h5", 
+        "endTime": "210534"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2103070_e2104311_b23076_c20160410213929338463_cspp_dev.h5", 
+        "beginTime": "21034", 
+        "timeFrame": "t2103070_e2104311", 
+        "DTS": "20160410T210304", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2103070_e2104311_b23076_c20160410213928345095_cspp_dev.h5", 
+        "endTime": "210419"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2101416_e2103057_b23076_c20160410213446940396_cspp_dev.h5", 
+        "beginTime": "210125", 
+        "timeFrame": "t2101416_e2103057", 
+        "DTS": "20160410T210125", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2101416_e2103057_b23076_c20160410213442299265_cspp_dev.h5", 
+        "endTime": "21033"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2100162_e2101403_b23076_c20160410213402375078_cspp_dev.h5", 
+        "beginTime": "210010", 
+        "timeFrame": "t2100162_e2101403", 
+        "DTS": "20160410T210010", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2100162_e2101403_b23076_c20160410213349223628_cspp_dev.h5", 
+        "endTime": "210124"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2058507_e2100149_b23076_c20160410213433943443_cspp_dev.h5", 
+        "beginTime": "205830", 
+        "timeFrame": "t2058507_e2100149", 
+        "DTS": "20160410T205830", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2058507_e2100149_b23076_c20160410213426347957_cspp_dev.h5", 
+        "endTime": "21009"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2057253_e2058495_b23076_c20160410213303752228_cspp_dev.h5", 
+        "beginTime": "205715", 
+        "timeFrame": "t2057253_e2058495", 
+        "DTS": "20160410T205715", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2057253_e2058495_b23076_c20160410213256874069_cspp_dev.h5", 
+        "endTime": "205830"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t2056014_e2057241_b23076_c20160410213201156134_cspp_dev.h5", 
+        "beginTime": "20561", 
+        "timeFrame": "t2056014_e2057241", 
+        "DTS": "20160410T205601", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t2056014_e2057241_b23076_c20160410213151263988_cspp_dev.h5", 
+        "endTime": "205714"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1926230_e1927474_b23075_c20160410204011254382_cspp_dev.h5", 
+        "beginTime": "192614", 
+        "timeFrame": "t1926230_e1927474", 
+        "DTS": "20160410T192614", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1926230_e1927474_b23075_c20160410204010773632_cspp_dev.h5", 
+        "endTime": "192728"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1924576_e1926218_b23075_c20160410203814110896_cspp_dev.h5", 
+        "beginTime": "192435", 
+        "timeFrame": "t1924576_e1926218", 
+        "DTS": "20160410T192435", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1924576_e1926218_b23075_c20160410203813780538_cspp_dev.h5", 
+        "endTime": "192613"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1923322_e1924564_b23075_c20160410203244953122_cspp_dev.h5", 
+        "beginTime": "192319", 
+        "timeFrame": "t1923322_e1924564", 
+        "DTS": "20160410T192319", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1923322_e1924564_b23075_c20160410203229932584_cspp_dev.h5", 
+        "endTime": "192434"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1922068_e1923309_b23075_c20160410203411414616_cspp_dev.h5", 
+        "beginTime": "19224", 
+        "timeFrame": "t1922068_e1923309", 
+        "DTS": "20160410T192204", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1922068_e1923309_b23075_c20160410203405671439_cspp_dev.h5", 
+        "endTime": "192319"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1920414_e1922055_b23075_c20160410203332252963_cspp_dev.h5", 
+        "beginTime": "192025", 
+        "timeFrame": "t1920414_e1922055", 
+        "DTS": "20160410T192025", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1920414_e1922055_b23075_c20160410203324484580_cspp_dev.h5", 
+        "endTime": "19223"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1919160_e1920401_b23075_c20160410203451110406_cspp_dev.h5", 
+        "beginTime": "191910", 
+        "timeFrame": "t1919160_e1920401", 
+        "DTS": "20160410T191910", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1919160_e1920401_b23075_c20160410203447101276_cspp_dev.h5", 
+        "endTime": "192024"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1917521_e1919147_b23075_c20160410203144663777_cspp_dev.h5", 
+        "beginTime": "191731", 
+        "timeFrame": "t1917521_e1919147", 
+        "DTS": "20160410T191731", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1917521_e1919147_b23075_c20160410203135337368_cspp_dev.h5", 
+        "endTime": "19199"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1745246_e1746470_b23074_c20160410183114161026_cspp_dev.h5", 
+        "beginTime": "174515", 
+        "timeFrame": "t1745246_e1746470", 
+        "DTS": "20160410T174515", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1745246_e1746470_b23074_c20160410183109854245_cspp_dev.h5", 
+        "endTime": "174628"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1743592_e1745233_b23074_c20160410183213379748_cspp_dev.h5", 
+        "beginTime": "174336", 
+        "timeFrame": "t1743592_e1745233", 
+        "DTS": "20160410T174336", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1743592_e1745233_b23074_c20160410183200256062_cspp_dev.h5", 
+        "endTime": "174514"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1742338_e1743579_b23074_c20160410183128306272_cspp_dev.h5", 
+        "beginTime": "174220", 
+        "timeFrame": "t1742338_e1743579", 
+        "DTS": "20160410T174220", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1742338_e1743579_b23074_c20160410183114051028_cspp_dev.h5", 
+        "endTime": "174335"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1741084_e1742325_b23074_c20160410183139906657_cspp_dev.h5", 
+        "beginTime": "17415", 
+        "timeFrame": "t1741084_e1742325", 
+        "DTS": "20160410T174105", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1741084_e1742325_b23074_c20160410183135449088_cspp_dev.h5", 
+        "endTime": "174220"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1604244_e1605486_b23073_c20160410163325100063_cspp_dev.h5", 
+        "beginTime": "160415", 
+        "timeFrame": "t1604244_e1605486", 
+        "DTS": "20160410T160415", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1604244_e1605486_b23073_c20160410163309684087_cspp_dev.h5", 
+        "endTime": "160529"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1602590_e1604232_b23073_c20160410163211620619_cspp_dev.h5", 
+        "beginTime": "160235", 
+        "timeFrame": "t1602590_e1604232", 
+        "DTS": "20160410T160235", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1602590_e1604232_b23073_c20160410163207735809_cspp_dev.h5", 
+        "endTime": "160414"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1601334_e1602578_b23073_c20160410163301078401_cspp_dev.h5", 
+        "beginTime": "160120", 
+        "timeFrame": "t1601334_e1602578", 
+        "DTS": "20160410T160120", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1601334_e1602578_b23073_c20160410163251003729_cspp_dev.h5", 
+        "endTime": "160235"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1423242_e1424484_b23072_c20160410153348360288_cspp_dev.h5", 
+        "beginTime": "142315", 
+        "timeFrame": "t1423242_e1424484", 
+        "DTS": "20160410T142315", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1423242_e1424484_b23072_c20160410153348028794_cspp_dev.h5", 
+        "endTime": "142429"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1421588_e1423230_b23072_c20160410153216756011_cspp_dev.h5", 
+        "beginTime": "142135", 
+        "timeFrame": "t1421588_e1423230", 
+        "DTS": "20160410T142135", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1421588_e1423230_b23072_c20160410153203706372_cspp_dev.h5", 
+        "endTime": "142314"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1250564_e1252207_b23071_c20160410134011312392_cspp_dev.h5", 
+        "beginTime": "125034", 
+        "timeFrame": "t1250564_e1252207", 
+        "DTS": "20160410T125034", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1250564_e1252207_b23071_c20160410134005116722_cspp_dev.h5", 
+        "endTime": "125212"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1240584_e1242228_b23071_c20160410133232306958_cspp_dev.h5", 
+        "beginTime": "124035", 
+        "timeFrame": "t1240584_e1242228", 
+        "DTS": "20160410T124035", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1240584_e1242228_b23071_c20160410133220616134_cspp_dev.h5", 
+        "endTime": "124214"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t1109563_e1111206_b23070_c20160410124148074305_cspp_dev.h5", 
+        "beginTime": "110934", 
+        "timeFrame": "t1109563_e1111206", 
+        "DTS": "20160410T110934", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t1109563_e1111206_b23070_c20160410124119992768_cspp_dev.h5", 
+        "endTime": "111112"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t0044030_e0045272_b23064_c20160410013228005345_cspp_dev.h5", 
+        "beginTime": "00442", 
+        "timeFrame": "t0044030_e0045272", 
+        "DTS": "20160410T004402", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t0044030_e0045272_b23064_c20160410013223897184_cspp_dev.h5", 
+        "endTime": "004516"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t0042376_e0044018_b23064_c20160410013224123180_cspp_dev.h5", 
+        "beginTime": "004223", 
+        "timeFrame": "t0042376_e0044018", 
+        "DTS": "20160410T004223", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t0042376_e0044018_b23064_c20160410013220247520_cspp_dev.h5", 
+        "endTime": "00441"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t0041122_e0042364_b23064_c20160410013206407938_cspp_dev.h5", 
+        "beginTime": "00417", 
+        "timeFrame": "t0041122_e0042364", 
+        "DTS": "20160410T004107", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t0041122_e0042364_b23064_c20160410013159000210_cspp_dev.h5", 
+        "endTime": "004222"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160410_t0039468_e0041110_b23064_c20160410013210124523_cspp_dev.h5", 
+        "beginTime": "003928", 
+        "timeFrame": "t0039468_e0041110", 
+        "DTS": "20160410T003928", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160410_t0039468_e0041110_b23064_c20160410013153733236_cspp_dev.h5", 
+        "endTime": "00417"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160409_t2305536_e2307180_b23063_c20160409234013890596_cspp_dev.h5", 
+        "beginTime": "230532", 
+        "timeFrame": "t2305536_e2307180", 
+        "DTS": "20160409T230532", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160409_t2305536_e2307180_b23063_c20160409234011613681_cspp_dev.h5", 
+        "endTime": "230711"
+    }, 
+    {
+        "geoFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/GDNBO/GDNBO_npp_d20160409_t2304282_e2305524_b23063_c20160409234022817819_cspp_dev.h5", 
+        "beginTime": "230417", 
+        "timeFrame": "t2304282_e2305524", 
+        "DTS": "20160409T230417", 
+        "dnbFile": "/mnt/data1/DNB-destripe/NPPData/ALASKA/SVDNB/SVDNB_npp_d20160409_t2304282_e2305524_b23063_c20160409234021107233_cspp_dev.h5", 
+        "endTime": "230531"
+    }
+]
