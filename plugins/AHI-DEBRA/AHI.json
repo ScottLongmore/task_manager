@@ -1,0 +1,52 @@
+{
+  "name":"AHI",
+  "#workDirRoot":"/mnt/data1/AHI_WORK",
+  "workDirRoot":"/local/home/slongmore/Projects/AHI/work/",
+  "logDir":"/home/slongmore/Projects/AHI/dev/AHI/log",
+  "completeTaskFile":"/home/slongmore/Projects/AHI/dev/AHI/etc/AHI_complete.json",
+  "primeTasksKey":"DTS",
+  "sortReverseOption":true,
+  "plugin": {
+     "module":"plgnAHI",
+     "purge":"PURGE",
+     "tasks":"TASKS",
+     "work":"WORK",
+     "decompressExe":"/usr/bin/bzip2",
+     "binToTDFScp":"/home/slongmore/Projects/AHI/dev/AHI/scripts/convert/conv_AHI_BIN_to_TDF_STEVE.pl",
+     "DEBRAScp":"/home/slongmore/Projects/AHI/dev/AHI/scripts/debra/ahi_dust_DEBRA_driver.pl",
+     "DEBRAScpDir":"/home/slongmore/Projects/AHI/dev/AHI/scripts/debra",
+     "binDir":"/home/slongmore/Projects/AHI/dev/AHI/bin/",
+     "#tdfDir":"/mnt/data1/AHI_TDF/",
+     "tdfDir":"/local/home/slongmore/Projects/AHI/work/tdf",
+     "#imgDir":"/mnt/data2/ftp/AHI_IMAGERY_MILLER/",
+     "imgDir":"/local/home/slongmore/Projects/AHI/work/image",
+     "tdfExt":"AHI.himawari-8.tdf",
+     "sectors": {
+        "CHINA": {
+            "lines":2001,
+            "line_start":3000,
+            "line_end":5000,
+            "samples":2001,
+            "samp_start":3000,
+            "samp_end":5000,
+            "sat_name":"himawari-8",
+            "sensor_name":"AHI",
+            "centlon":"140.7 E"
+        }
+     }
+  },
+  "meta": {
+    "bkwdDelta": 3600,
+    "DTGfrmts": {
+      "Y":"%Y",
+      "m":"%m",
+      "d":"%d"
+    }
+  },
+  "inputs": {
+    "AHI": {
+      "dirs":["/mnt/data1/ahi_bzip2/%Y%m%d_\\d{2}/"],
+      "re":"^HS_H08_(?P<DTS>\\d{8}_\\d{4})_B(?P<BAND>\\d{2})_FLDK_R(?P<RES>\\d{2})_S(?P<SCAN>\\d{4}).DAT.bz2$"
+    }
+  }
+}

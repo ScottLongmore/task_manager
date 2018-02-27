@@ -1,0 +1,56 @@
+{
+  "name":"AHI",
+  "#workDirRoot":"/mnt/data1/AHI_WORK",
+  "workDirRoot":"/local/home/slongmore/Projects/AHI/work/cloud-snow",
+  "#logDir":"/home/slongmore/Projects/AHI/dev/cloud-snow/log",
+  "logDir":"/home/slongmore/Projects/AHI/dev/cloud-snow/log",
+  "completeTaskFile":"/home/slongmore/Projects/AHI/dev/cloud-snow/etc/AHI_cloud-snow_complete.json",
+  "primeTasksKey":"DTS",
+  "sortReverseOption":true,
+  "plugin": {
+     "module":"plgnAHI_cloud-snow",
+     "purge":"PURGE",
+     "tasks":"TASKS",
+     "work":"WORK",
+     "decompressExe":"/usr/bin/bzip2",
+     "binToTDFScp":"/home/slongmore/Projects/AHI/dev/cloud-snow/scripts/convert/conv_AHI_BIN_to_TDF_STEVE.pl",
+     "binDir":"/home/slongmore/Projects/AHI/dev/cloud-snow/bin/",
+     "AHICloudSnowScp":"/local/home/slongmore/Projects/AHI/dev/cloud-snow/scripts/cloud-snow/AHI_cloudsnow_day_TDF_driver.pl",
+     "AHICloudSnowScpDir":"/local/home/slongmore/Projects/AHI/dev/cloud-snow/scripts/cloud-snow",
+     "#tdfDir":"/mnt/data1/AHI_TDF/cloud-snow/",
+     "tdfDir":"/local/home/slongmore/Projects/AHI/work/cloud-snow/tdf",
+     "#imgDir":"/mnt/data2/ftp/AHI_IMAGERY_MILLER/",
+     "imgDir":"/local/home/slongmore/Projects/AHI/work/cloud-snow/image",
+     "tdfExt":"AHI.himawari-8.tdf",
+     "sectors": {
+        "CHINA": {
+            "lines":"2501",
+            "line_start":"500",
+            "line_end":"3000",
+            "samples":"2501",
+            "samp_start":"1500",
+            "samp_end":"4000",
+            "sat_name":"himawari-8",
+            "sensor_name":"AHI",
+            "centlon":"140.7 E"
+        }
+     }
+  },
+  "meta": {
+    "#bkwdDelta": 3600,
+    "bkwdDelta": 1000000000,
+    "DTGfrmts": {
+      "Y":"%Y",
+      "m":"%m",
+      "d":"%d"
+    }
+  },
+  "inputs": {
+    "AHI": {
+      "#dirs":["/mnt/data1/ahi_bzip2/%Y%m%d_\\d{2}/"],
+      "#dirs":["/local/home/slongmore/Projects/AHI/data/ahi_bzip2/%Y%m%d_\\d{2}/"],
+      "dirs":["/local/home/slongmore/Projects/AHI/data/ahi_bzip2/20160927_19/"],
+      "re":"^HS_H08_(?P<DTS>\\d{8}_\\d{4})_B(?P<BAND>\\d{2})_FLDK_R(?P<RES>\\d{2})_S(?P<SCAN>\\d{4}).DAT.bz2$"
+    }
+  }
+}
