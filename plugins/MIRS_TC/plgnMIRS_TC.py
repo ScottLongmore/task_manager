@@ -33,7 +33,7 @@ import utils
 import error_codes
 import fileAction
 import dirRE
-import libmirs_tc as mirs_tc 
+import libMIRSTC as mirs_tc 
 
 LOG = logging.getLogger(__name__)  # create the logger for this file
 
