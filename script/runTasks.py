@@ -43,18 +43,31 @@ __license__ = 'BSD 3-clause'
 __maintainer__ = 'Scott Longmore'
 __email__ = 'scott.longmore@colostate.edu'
 
-# change to the current working directory in cron
+# Change to the current working directory in cron
 current_working_directory = os.path.dirname(exePath)
 os.chdir(current_working_directory)
-
-# setup logging
-logging_setup = "runTasks"
-setup_logging.setup_logging(logging_setup)
-LOG = logging.getLogger('runTasks')  # create the logger for this file
 
 # Variables
 runDTG = datetime.datetime.utcnow()
 ISODTSFormat = "%Y%m%dT%H%M%S"
+
+# Read Command Line Arguments
+options = argparse.ArgumentParser(prog='runTasks')
+options.add_argument('-c', '--config', dest='config', help='Configuration File')
+options.add_argument('-l', '--log', dest='log', help='Log File')
+try:
+    args = options.parse_args()
+    config_filename = args.config
+    logFile = args.log   
+except:
+    print('Syntax: python runTasks.py -c <config.json> -l <log file>')                                                                          |      logFile = args.log                                                                                                                         
+    sys.exit(1)       
+
+
+# setup logging
+logName="runTasks"
+LOG = logging.getLogger(logName)  # create the logger for this file
+setup_logging.setup_logging(logName,logFile)
 
 # Determine if process is running, or in zombie state
 cpid = os.getpid()
@@ -70,18 +83,6 @@ if len(procs) > 0:
         else:
             LOG.info("Process {} ({}) is in zombie state, terminating".format(__file__, pid))
             procs[pid].kill()
-
-# Read Command Line Arguments
-options = argparse.ArgumentParser(prog='runTasks')
-options.add_argument('-c', '--config', dest='config', help='Configuration File')
-
-try:
-    args = options.parse_args()
-    config_filename = args.config
-
-except:
-    msg = 'Syntax: python runTasks.py -c <config.json>'
-    utils.error(LOG, msg, error_codes.EX_USAGE)
 
 # Read and Validate Configuration File
 try:
