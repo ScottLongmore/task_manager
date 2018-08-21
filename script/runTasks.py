@@ -60,9 +60,8 @@ try:
     config_filename = args.config
     logFile = args.log   
 except:
-    print('Syntax: python runTasks.py -c <config.json> -l <log file>')                                                                          |      logFile = args.log                                                                                                                         
-    sys.exit(1)       
-
+    print('Syntax: python runTasks.py -c <config.json> -l <log file>')
+    sys.exit(1)
 
 # setup logging
 logName="runTasks"
