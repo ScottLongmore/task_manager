@@ -1,38 +1,38 @@
 {
-  "name":"MIRS_TC",
-  "workDirRoot":"/mnt/ssd-data2/MIRS_TC/runs/ops/SNPP/rt",
-  "logDir":"/mnt/ssd-data2/MIRS_TC/runs/ops/SNPP/logs",
-  "completeTaskFile":"/mnt/ssd-data2/MIRS_TC/runs/ops/SNPP/etc/MIRS_TC_rt_complete.json",
+  "name":"HISA",
+  "workDirRoot":"/mnt/ssd-data2/HISA/runs/dev/SNPP/rt",
+  "logDir":"/mnt/ssd-data2/HISA/runs/dev/SNPP/logs",
+  "completeTaskFile":"/mnt/ssd-data2/HISA/runs/dev/SNPP/etc/HISA_SNPP_complete.json",
   "primeTasksKey":"DTS",
   "sortReverseOption":true,
   "plugin": {
-    "module":"plgnMIRS_TC",
+    "module":"plgnHISA",
     "purge":"PURGE",
     "tasks":"TASKS",
     "work":"WORK",
     "NDE":{
-      "PCF":"MIRS_TC.PCF",
+      "PCF":"HISA.PCF",
       "PCFattrs":{
-        "working_directory":"/mnt/ssd-data2/MIRS_TC/runs/ops/SNPP/rt",
+        "working_directory":"/mnt/ssd-data2/HISA/runs/dev/SNPP/rt",
         "job_coverage_start":0,
         "job_coverage_end":0,
-        "algorithmLogMessageContext":"MIRS_TC",
+        "algorithmLogMessageContext":"HISA",
         "algorithmLogMessageError":"ERROR:",
         "algorithmLogMessageWarn":"WARNING:",
-        "SYS_DIR":"/mnt/ssd-data2/MIRS_TC/system/ops/MIRS_TC",
+        "SYS_DIR":"/mnt/ssd-data2/HISA/system/dev/HISA",
         "PYTHON":"/home/slongmore/local/anaconda2/bin/python",
         "WGRIB":"/home/slongmore/local/bin/wgrib2",
         "TAR":"/bin/tar"
       },
-      "LOG":"MIRS_TC.LOG",
-      "PSF":"MIRS_TC.PSF",
+      "LOG":"HISA.LOG",
+      "PSF":"HISA.PSF",
       "logDir":"log",
       "outputDir":"output"
     },
-    "MIRS_TC":{
-      "exe":"/mnt/ssd-data2/MIRS_TC/system/ops/MIRS_TC/scripts/python/mirs_tc/mirs_tc.py",
+    "HISA":{
+      "exe":"/mnt/ssd-data2/HISA/system/dev/HISA/scripts/python/HISA/HISA.py",
       "configs":{
-        "mirs_tc":"/mnt/ssd-data2/MIRS_TC/system/ops/MIRS_TC/scripts/python/mirs_tc/MIRS_TC.json"
+        "hisa":"/mnt/ssd-data2/HISA/system/dev/HISA/etc/HISA.json"
       }
     }
   },

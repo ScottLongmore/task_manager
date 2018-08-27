@@ -1,0 +1,70 @@
+{
+  "name":"HISA",
+  "workDirRoot":"/mnt/ssd-data2/HISA/runs/dev/NOAA20/rt",
+  "logDir":"/mnt/ssd-data2/HISA/runs/dev/NOAA20/logs",
+  "completeTaskFile":"/mnt/ssd-data2/HISA/runs/dev/NOAA20/etc/HISA_NOAA20_complete.json",
+  "primeTasksKey":"DTS",
+  "sortReverseOption":true,
+  "plugin": {
+    "module":"plgnHISA",
+    "purge":"PURGE",
+    "tasks":"TASKS",
+    "work":"WORK",
+    "NDE":{
+      "PCF":"HISA.PCF",
+      "PCFattrs":{
+        "working_directory":"/mnt/ssd-data2/HISA/runs/dev/NOAA20/rt",
+        "job_coverage_start":0,
+        "job_coverage_end":0,
+        "algorithmLogMessageContext":"HISA",
+        "algorithmLogMessageError":"ERROR:",
+        "algorithmLogMessageWarn":"WARNING:",
+        "SYS_DIR":"/mnt/ssd-data2/HISA/system/dev/HISA",
+        "PYTHON":"/home/slongmore/local/anaconda2/bin/python",
+        "WGRIB":"/home/slongmore/local/bin/wgrib2",
+        "TAR":"/bin/tar"
+      },
+      "LOG":"HISA.LOG",
+      "PSF":"HISA.PSF",
+      "logDir":"log",
+      "outputDir":"output"
+    },
+    "HISA":{
+      "exe":"/mnt/ssd-data2/HISA/system/dev/HISA/scripts/python/HISA/HISA.py",
+      "configs":{
+        "hisa":"/mnt/ssd-data2/HISA/system/dev/HISA/etc/HISA.json"
+      }
+    }
+  },
+  "meta": {
+    "bkwdDelta": 43200,
+    "DTGfrmts": {
+      "Y":"%Y",
+      "m":"%m",
+      "d":"%d",
+      "H":"%H"
+    }
+  },
+  "inputs": {
+    "adeck": {
+      "dirs":["/mnt/ssd-data1/ATCF/DOD","/mnt/ssd-data1/ATCF/NHC"],
+      "re":"^a(?P<stormId>(?P<basinId>\\w{2})(?P<stormNum>\\d{2})(?P<year>%Y))\\.dat",
+      "PCFkey":"adeck_input"
+    },
+    "gfs":{
+      "dirs":["/mnt/ssd-data1/GFS_grib2"],
+      "re":"^gfs\\.(?P<runDTG>\\d{10})\\.pgrb2\\.1p00\\.f(?P<fhour>\\d{3})$",
+      "PCFkey":"gfs_input"
+    },
+    "mirs_atms_img":{
+      "dirs":["/mnt/jtnas5/Incoming_Data/MIRS_Archive/ATMS-MIRS/d%Y%m%d_snpp-atm30s-rtnde/h%Y%m%d%H"],
+      "re":"^NPR-MIRS-(?P<type>IMG)_(?P<version>\\w+)_(?P<satellite>\\w+)_s(?P<startDT>\\d{14,15})_e(?P<endDT>\\d{14,15})_c(?P<createDT>\\d{14,15})\\.nc$",
+      "PCFkey":"mirs_img_input"
+    },
+    "mirs_atms_snd":{
+      "dirs":["/mnt/jtnas5/Incoming_Data/MIRS_Archive/ATMS-MIRS/d%Y%m%d_snpp-atm30s-rtnde/h%Y%m%d%H"],
+      "re":"^NPR-MIRS-(?P<type>SND)_(?P<version>\\w+)_(?P<satellite>\\w+)_s(?P<startDT>\\d{14,15})_e(?P<endDT>\\d{14,15})_c(?P<createDT>\\d{14,15})\\.nc$",
+      "PCFkey":"mirs_snd_input"
+    }
+  }
+}

@@ -1,6 +1,6 @@
-#!/usr/bin/python
+#/usr/bin/python
 """
-  plgnMIRS_TC.py - plug-in methods: TASKS, WORK, PURGE
+  plgnHISA_DRT.py - plug-in methods: TASKS, WORK, PURGE
 """
 
 # Stock modules
@@ -21,9 +21,7 @@ import pprint
 try:
     exePath=os.path.dirname(os.path.abspath(__file__))
     parentPath,childDir=os.path.split(exePath)
-    sys.path.insert(1,os.path.join(parentPath,"..","lib"))
-    mirstcPath=os.path.join(parentPath,"..","mirs_tc")
-    sys.path.insert(2,mirstcPath)
+    sys.path.insert(1,os.path.join(parentPath,"lib"))
 except:
    print "Unable to load local library paths"
    sys.exit(1)
@@ -33,7 +31,6 @@ import utils
 import error_codes
 import fileAction
 import dirRE
-import libMIRSTC as mirs_tc 
 
 LOG = logging.getLogger(__name__)  # create the logger for this file
 
@@ -77,70 +74,101 @@ def TASKS(config):
     img = config['inputs']['mirs_atms_img']
     snd = config['inputs']['mirs_atms_snd']
 
-    LOG.info("Creating MIRS_TC tasks")
-
-    endDTG=meta['runDTG'].replace(minute=0,second=0) # 
-    startDTG=endDTG-datetime.timedelta(seconds=meta['bkwdDelta'])
-    tasks = []
-
-    # Determine if run has already been completed
-    if 'runs' in config:
-       if endDTG.strftime(ISODTSFormat) in config['runs']:
-          LOG.info("Run already executed: {}, skipping".format(endDTG.strftime(ISODTSFormat)))
-          return(tasks)
-    else:
+    # Workaround for completed, queued runs, since complete queue uses dict vs unique key (dict changes with each run in RT)
+    # Need unique key based on runTime next version of runTasks 
+    if 'runs' not in config:
        config['runs']=[]
-    
+    if 'queued' not in config:
+       config['queued']=[]
+
+    LOG.info("Creating HISA tasks")
+
+    # Determine MIRS-TC model runs time window variables
+    runDTG=meta['runDTG'].replace(minute=0,second=0,microsecond=0) # Round to the previous hour
+    startDTG=runDTG-datetime.timedelta(seconds=meta['startDelta'])
+    endDTG=runDTG-datetime.timedelta(seconds=meta['endDelta'])
+    runDelta=datetime.timedelta(seconds=meta['runDelta'])
+    dataDelta=datetime.timedelta(seconds=meta['dataDelta'])
+
     # Retrieve files (adeck,gfs,mirs)
     FA = fileAction.fileAction(config)
 
-    # Get adeck files 
-    filenames = FA.findInputFiles(['adeck'])['adeck']
-    adeckFiles=[]
-    for filename in filenames:
-        filetime = datetime.datetime.fromtimestamp(os.path.getmtime(filename))
-        if filetime > config['meta']['bkwdDTG']: 
-            adeckFiles.append(filename)
+    # Create tasks by determining ATCF,GFS,MiRS files within run time windows
+    tasks = []
+    endRunDTG=endDTG
+    while endRunDTG >= startDTG:
 
-    # Get GFS file 
-    filenames = FA.findInputFiles(['gfs'])['gfs']
-    latestDTG=config['meta']['bkwdDTG']
-    gfsFile=None
-    for filename in filenames:
-        m=re.match(gfs['re'],os.path.basename(filename))
-        fields=m.groupdict()
-        gfsDTG=datetime.datetime.strptime(fields['runDTG'],"%Y%m%d%H")
-        if gfsDTG > latestDTG:
-            latestDTG=gfsDTG
-            gfsFile=filename
+        startRunDTG = endRunDTG - dataDelta 
+        LOG.debug("startDTG: {} endDTG: {}".format(startRunDTG,endRunDTG))
 
-    # Get MIRS ATMS IMG files
-    filenames = FA.findInputFiles(['mirs_atms_img'])['mirs_atms_img']
-    imgFiles=[]
-    for filename in filenames:
-        filetime = datetime.datetime.fromtimestamp(os.path.getmtime(filename))
-        if filetime > config['meta']['bkwdDTG']: 
-            imgFiles.append(filename)
+        # Determine if run has already been completed
+        if endRunDTG.strftime(ISODTSFormat) in config['runs']:
+           LOG.debug("Run already executed: {}, skipping".format(endRunDTG.strftime(ISODTSFormat)))
+           endRunDTG = endRunDTG - runDelta 
+           continue
 
-    # Get MIRS ATMS SND files
-    filenames = FA.findInputFiles(['mirs_atms_snd'])['mirs_atms_snd']
-    sndFiles=[]
-    for filename in filenames:
-        filetime = datetime.datetime.fromtimestamp(os.path.getmtime(filename))
-        if filetime > config['meta']['bkwdDTG']: 
-            sndFiles.append(filename)
+        # Determine if run has already been queued 
+        if endRunDTG.strftime(ISODTSFormat) in config['queued']:
+           LOG.debug("Run already queued: {}, skipping".format(endRunDTG.strftime(ISODTSFormat)))
+           endRunDTG = endRunDTG - runDelta 
+           continue
+    
+        # Get adeck files 
+        filenames = FA.findInputFiles(['adeck'])['adeck']
+        adeckFiles=[]
+        for filename in filenames:
+            fileDTG = datetime.datetime.fromtimestamp(os.path.getmtime(filename))
+            if fileDTG >= startRunDTG:
+                adeckFiles.append(filename)
 
-    if adeckFiles and gfsFile and imgFiles and sndFiles:
-        records={
-           "DTS":endDTG.strftime(ISODTSFormat),
-           "job_coverage_start":startDTG.strftime(NDEFormat),
-           "job_coverage_end":endDTG.strftime(NDEFormat),
-           "adeck":adeckFiles,
-           "gfs":gfsFile,
-           "mirs_atms_img":imgFiles,
-           "mirs_atms_snd":sndFiles
-        }
-        tasks.append(records)
+        # Get GFS file 
+        filenames = FA.findInputFiles(['gfs'])['gfs']
+        latestDTG=startRunDTG
+        gfsFile=None
+        for filename in filenames:
+            m=re.match(gfs['re'],os.path.basename(filename))
+            fields=m.groupdict()
+            gfsDTG=datetime.datetime.strptime(fields['runDTG'],"%Y%m%d%H")
+            if gfsDTG > latestDTG:
+                latestDTG=gfsDTG
+                gfsFile=filename
+
+        # Get MIRS ATMS IMG files
+        filenames = FA.findInputFiles(['mirs_atms_img'])['mirs_atms_img']
+        imgFiles=[]
+        for filename in filenames:
+            m=re.match(img['re'],os.path.basename(filename))
+            fields=m.groupdict()
+            fileDTG = datetime.datetime.strptime(fields['startDT'],"%Y%m%d%H%M%S") 
+            if fileDTG >= startRunDTG and fileDTG <= endRunDTG: 
+                imgFiles.append(filename)
+
+        # Get MIRS ATMS SND files
+        filenames = FA.findInputFiles(['mirs_atms_snd'])['mirs_atms_snd']
+        sndFiles=[]
+        for filename in filenames:
+            m=re.match(snd['re'],os.path.basename(filename))
+            fields=m.groupdict()
+            fileDTG = datetime.datetime.strptime(fields['startDT'],"%Y%m%d%H%M%S") 
+            if fileDTG >= startRunDTG and fileDTG <= endRunDTG:
+                sndFiles.append(filename)
+
+        LOG.debug("ATCF: {} GFS: {} IMG: {} SND: {}".format(len(adeckFiles),bool(gfsFile),len(imgFiles),len(sndFiles)))
+
+        if adeckFiles and gfsFile and imgFiles and sndFiles:
+            records={
+               "DTS":endRunDTG.strftime(ISODTSFormat),
+               "job_coverage_start":startRunDTG.strftime(NDEFormat),
+               "job_coverage_end":endRunDTG.strftime(NDEFormat),
+               "adeck":adeckFiles,
+               "gfs":gfsFile,
+               "mirs_atms_img":imgFiles,
+               "mirs_atms_snd":sndFiles
+            }
+            tasks.append(records)
+            config['queued'].append(endRunDTG.strftime(ISODTSFormat))
+
+        endRunDTG = endRunDTG - runDelta 
 
     LOG.info("Number of Tasks: {}".format(len(tasks)))
 
@@ -171,9 +199,9 @@ def WORK(config, task):
     snd = config['inputs']['mirs_atms_snd']
     plugin=config['plugin']
     nde=plugin['NDE']
-    mirs_tc=plugin['MIRS_TC']
+    hisa=plugin['HISA']
    
-    LOG.info("Preparing MIRS_TC task: {} enviornment".format(task['DTS']))
+    LOG.info("Preparing HISA task: {} enviornment".format(task['DTS']))
 
     taskDTG=datetime.datetime.strptime(task['DTS'],ISODTSFormat)
 
@@ -277,11 +305,11 @@ def WORK(config, task):
     os.symlink(os.path.join(workDir,nde["logDir"]),os.path.join(subLogDir,nde["logDir"]))
     os.symlink(os.path.join(workDir,nde["outputDir"]),os.path.join(subLogDir,nde["outputDir"]))
 
-    # Execute MIRS_TC algorithm driver
-    LOG.info("Running mirs_tc.py")
-    commandList=[nde['PCFattrs']['PYTHON'],mirs_tc['exe']]
-    commandArgs=['-c',mirs_tc['configs']['mirs_tc'],'-i',pcfFile]
-    commandId="mirs_tc"
+    # Execute HISA driver
+    LOG.info("Running HISA.py")
+    commandList=[nde['PCFattrs']['PYTHON'],hisa['exe']]
+    commandArgs=['-c',hisa['configs']['hisa'],'-i',pcfFile]
+    commandId="HISA"
     stdoutFile=os.path.join(subLogDir,"{}.stdout".format(commandId))
     stderrFile=os.path.join(subLogDir,"{}.stderr".format(commandId))
     LOG.info("Executing: {}".format(" ".join(commandList+commandArgs)))
