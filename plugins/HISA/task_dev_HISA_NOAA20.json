@@ -53,7 +53,7 @@
     },
     "gfs":{
       "dirs":["/mnt/ssd-data1/GFS_grib2"],
-      "re":"^gfs\\.(?P<runDTG>\\d{10})\\.pgrb2\\.1p00\\.f(?P<fhour>\\d{3})$",
+      "re":"^gfs\\.(?P<runDTG>\\d{8})(?P<hour>\\d{2})\\.pgrb2\\.1p00\\.f(?P<fhour>\\d{3})$",
       "PCFkey":"gfs_input"
     },
     "mirs_atms_img":{

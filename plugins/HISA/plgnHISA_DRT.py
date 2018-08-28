@@ -128,7 +128,7 @@ def TASKS(config):
         for filename in filenames:
             m=re.match(gfs['re'],os.path.basename(filename))
             fields=m.groupdict()
-            gfsDTG=datetime.datetime.strptime(fields['runDTG'],"%Y%m%d%H")
+            gfsDTG=datetime.datetime.strptime("".join(fields['runDTG'],fields['hour'],"%Y%m%d%H")
             if gfsDTG > latestDTG:
                 latestDTG=gfsDTG
                 gfsFile=filename
@@ -260,7 +260,7 @@ def WORK(config, task):
         gfsPath,gfsFile=os.path.split(task['gfs'])
         m=re.match(gfs['re'],gfsFile)
         fields=m.groupdict()
-        gfsDTG=datetime.datetime.strptime(fields['runDTG'],"%Y%m%d%H")
+        gfsDTG=datetime.datetime.strptime("".join(fields['runDTG'],fields['hour'],"%Y%m%d%H")
         gfsNDEFile="gfs.t{}z.pgrb2.1p00.f{}.{}".format(gfsDTG.strftime("%H"),fields['fhour'],gfsDTG.strftime("%Y%m%d"))
     
         utils.linkFile(gfsPath,gfsFile,workDir,gfsNDEFile)
