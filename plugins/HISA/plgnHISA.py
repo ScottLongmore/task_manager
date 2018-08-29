@@ -97,7 +97,7 @@ def TASKS(config):
     adeckBkwdDTG = endDTG - datetime.timedelta(seconds=adeck['bkwdDelta'])
     for filename in filenames:
         filetime = datetime.datetime.fromtimestamp(os.path.getmtime(filename))
-        if filetime > adeckBkwdDTG 
+        if filetime > adeckBkwdDTG:
             adeckFiles.append(filename)
 
     # Get latest GFS file 
@@ -120,7 +120,7 @@ def TASKS(config):
     imgBkwdDTG =  endDTG - datetime.timedelta(seconds=img['bkwdDelta'])
     for filename in filenames:
         filetime = datetime.datetime.fromtimestamp(os.path.getmtime(filename))
-        if filetime > imgBkwdDTG 
+        if filetime > imgBkwdDTG: 
             imgFiles.append(filename)
 
     # Get MIRS ATMS SND files
@@ -129,7 +129,7 @@ def TASKS(config):
     sndBkwdDTG =  endDTG - datetime.timedelta(seconds=snd['bkwdDelta'])
     for filename in filenames:
         filetime = datetime.datetime.fromtimestamp(os.path.getmtime(filename))
-        if filetime > sndBkwdDTG 
+        if filetime > sndBkwdDTG: 
             sndFiles.append(filename)
 
     if adeckFiles and gfsFile and imgFiles and sndFiles:
