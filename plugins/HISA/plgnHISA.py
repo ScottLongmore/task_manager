@@ -94,14 +94,16 @@ def TASKS(config):
     # Get adeck files 
     filenames = FA.findInputFiles(['adeck'])['adeck']
     adeckFiles=[]
+    adeckBkwdDTG = endDTG - datetime.timedelta(seconds=adeck['bkwdDelta'])
     for filename in filenames:
         filetime = datetime.datetime.fromtimestamp(os.path.getmtime(filename))
-        if filetime > config['meta']['bkwdDTG']: 
+        if filetime > adeckBkwdDTG 
             adeckFiles.append(filename)
 
-    # Get GFS file 
+    # Get latest GFS file 
     filenames = FA.findInputFiles(['gfs'])['gfs']
-    latestDTG=config['meta']['bkwdDTG']
+    gfsBkwdDTG =  endDTG - datetime.timedelta(seconds=gfs['bkwdDelta'])
+    latestDTG=gfsBkwdDTG
     gfsFile=None
     for filename in filenames:
         m=re.match(gfs['re'],os.path.basename(filename))
@@ -111,20 +113,23 @@ def TASKS(config):
             latestDTG=gfsDTG
             gfsFile=filename
 
+
     # Get MIRS ATMS IMG files
     filenames = FA.findInputFiles(['mirs_atms_img'])['mirs_atms_img']
     imgFiles=[]
+    imgBkwdDTG =  endDTG - datetime.timedelta(seconds=img['bkwdDelta'])
     for filename in filenames:
         filetime = datetime.datetime.fromtimestamp(os.path.getmtime(filename))
-        if filetime > config['meta']['bkwdDTG']: 
+        if filetime > imgBkwdDTG 
             imgFiles.append(filename)
 
     # Get MIRS ATMS SND files
     filenames = FA.findInputFiles(['mirs_atms_snd'])['mirs_atms_snd']
     sndFiles=[]
+    sndBkwdDTG =  endDTG - datetime.timedelta(seconds=snd['bkwdDelta'])
     for filename in filenames:
         filetime = datetime.datetime.fromtimestamp(os.path.getmtime(filename))
-        if filetime > config['meta']['bkwdDTG']: 
+        if filetime > sndBkwdDTG 
             sndFiles.append(filename)
 
     if adeckFiles and gfsFile and imgFiles and sndFiles:

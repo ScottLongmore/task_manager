@@ -47,21 +47,25 @@
   },
   "inputs": {
     "adeck": {
+      "bkwdDelta": 43200,
       "dirs":["/mnt/ssd-data1/ATCF/DOD","/mnt/ssd-data1/ATCF/NHC"],
       "re":"^a(?P<stormId>(?P<basinId>\\w{2})(?P<stormNum>\\d{2})(?P<year>%Y))\\.dat",
       "PCFkey":"adeck_input"
     },
     "gfs":{
+      "bkwdDelta": 129600,
       "dirs":["/mnt/ssd-data1/GFS_grib2"],
       "re":"^gfs\\.(?P<runDTG>\\d{8})(?P<hour>\\d{2})\\.pgrb2\\.1p00\\.f(?P<fhour>\\d{3})$",
       "PCFkey":"gfs_input"
     },
     "mirs_atms_img":{
+      "bkwdDelta": 43200,
       "dirs":["/mnt/jtnas5/Incoming_Data/MIRS_Archive/ATMS-MIRS/d%Y%m%d_snpp-atm30s-rtnde/h%Y%m%d%H"],
       "re":"^NPR-MIRS-(?P<type>IMG)_(?P<version>\\w+)_(?P<satellite>\\w+)_s(?P<startDT>\\d{14,15})_e(?P<endDT>\\d{14,15})_c(?P<createDT>\\d{14,15})\\.nc$",
       "PCFkey":"mirs_img_input"
     },
     "mirs_atms_snd":{
+      "bkwdDelta": 43200,
       "dirs":["/mnt/jtnas5/Incoming_Data/MIRS_Archive/ATMS-MIRS/d%Y%m%d_snpp-atm30s-rtnde/h%Y%m%d%H"],
       "re":"^NPR-MIRS-(?P<type>SND)_(?P<version>\\w+)_(?P<satellite>\\w+)_s(?P<startDT>\\d{14,15})_e(?P<endDT>\\d{14,15})_c(?P<createDT>\\d{14,15})\\.nc$",
       "PCFkey":"mirs_snd_input"
