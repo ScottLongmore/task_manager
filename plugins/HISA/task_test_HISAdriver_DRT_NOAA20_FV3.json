@@ -1,0 +1,75 @@
+{
+  "name":"HISA",
+  "workDirRoot":"/mnt/ssd-data2/HISA/runs/test/HISAdriver/NOAA20/rt",
+  "logDir":"/mnt/ssd-data2/HISA/runs/test/HISAdriver/NOAA20/logs",
+  "completeTaskFile":"/mnt/ssd-data2/HISA/runs/test/HISAdriver/NOAA20/etc/HISA_NOAA20_complete.json",
+  "primeTasksKey":"DTS",
+  "sortReverseOption":true,
+  "plugin": {
+    "module":"plgnHISA_DRT",
+    "purge":"PURGE",
+    "tasks":"TASKS",
+    "work":"WORK",
+    "NDE":{
+      "PCF":"HISA.PCF",
+      "PCFattrs":{
+        "working_directory":"/mnt/ssd-data2/HISA/runs/test/HISAdriver/NOAA20/rt",
+        "job_coverage_start":0,
+        "job_coverage_end":0,
+        "algorithmLogMessageContext":"HISA",
+        "algorithmLogMessageError":"ERROR:",
+        "algorithmLogMessageWarn":"WARNING:",
+        "SYS_DIR":"/mnt/ssd-data2/HISA/system/test/HISAdriver",
+        "PYTHON":"/home/j1-psdi/local/anaconda2/bin/python",
+        "WGRIB":"/usr/bin/wgrib2",
+        "TAR":"/bin/tar"
+      },
+      "LOG":"HISA.LOG",
+      "PSF":"HISA.PSF",
+      "logDir":"log",
+      "outputDir":"output"
+    },
+    "HISA":{
+      "exe":"/mnt/ssd-data2/HISA/system/test/HISAdriver/scripts/python/HISA/HISA.py",
+      "configs":{
+        "hisa":"/mnt/ssd-data2/HISA/system/test/HISAdriver/etc/HISA_NOAA20.json"
+      }
+    }
+  },
+  "meta": {
+    "bkwdDelta": 32400,
+    "startDelta": 129600,
+    "endDelta": 43200,
+    "runDelta": 7200,
+    "dataDelta": 32400,
+    "DTGfrmts": {
+      "Y":"%Y",
+      "m":"%m",
+      "d":"%d",
+      "H":"%H"
+    }
+  },
+  "inputs": {
+    "adeck": {
+      "dirs":["/mnt/ssd-data1/ATCF/DOD","/mnt/ssd-data1/ATCF/NHC"],
+      "re":"^a(?P<stormId>(?P<basinId>\\w{2})(?P<stormNum>\\d{2})(?P<year>%Y))\\.dat",
+      "PCFkey":"adeck_input"
+    },
+    "gfs":{
+      "dirs":["/mnt/ssd-data1/FV3_grib2/"],
+      "#re":"^gfs\\.(?P<runDTG>\\d{8})(?P<hour>\\d{2})\\.pgrb2\\.1p00\\.f(?P<fhour>\\d{3}).test$",
+      "re":"^gfs\\.t(?P<hour>\\d{2})z\\.pgrb2\\.1p00\\.f(?P<fhour>\\d{3})\\.(?P<runDTG>\\d{8}).test$",
+      "PCFkey":"gfs_input"
+    },
+    "mirs_atms_img":{
+      "dirs":["/mnt/ssd-data1/Incoming_RT_MIRS/NOAA20_ATMS-MIRS"],
+      "re":"^NPR-MIRS-(?P<type>IMG)_(?P<version>\\w+)_(?P<satellite>\\w+)_s(?P<startDT>\\d{14})\\d_e(?P<endDT>\\d{14})\\d_c(?P<createDT>\\d{14})\\d\\.nc$",
+      "PCFkey":"mirs_img_input"
+    },
+    "mirs_atms_snd":{
+      "dirs":["/mnt/ssd-data1/Incoming_RT_MIRS/NOAA20_ATMS-MIRS"],
+      "re":"^NPR-MIRS-(?P<type>SND)_(?P<version>\\w+)_(?P<satellite>\\w+)_s(?P<startDT>\\d{14})\\d_e(?P<endDT>\\d{14})\\d_c(?P<createDT>\\d{14})\\d\\.nc$",
+      "PCFkey":"mirs_snd_input"
+    }
+  }
+}

@@ -224,7 +224,7 @@ def WORK(config, task):
             utils.linkFile(adeckPath,adeckFile,workDir,adeckNDEFile)
             pcfFH.write("{}={}\n".format(adeck['PCFkey'],adeckNDEFile))
         except:
-            LOG.warning("Problem linking adeck file: {)".format(adeckFilename))
+            LOG.warning("Problem linking adeck file: {}".format(adeckFilename))
             status=False
             return(status)
 
@@ -240,7 +240,7 @@ def WORK(config, task):
         utils.linkFile(gfsPath,gfsFile,workDir,gfsNDEFile)
         pcfFH.write("{}={}\n".format(gfs['PCFkey'],gfsNDEFile))
     except:
-        LOG.warning("Problem linking gfs file: {)".format(task['gfs']))
+        LOG.warning("Problem linking gfs file: {}".format(task['gfs']))
         status=False
         return(status)
 
@@ -252,7 +252,7 @@ def WORK(config, task):
             utils.linkFile(imgPath,imgFile,workDir,imgFile)
             pcfFH.write("{}={}\n".format(img['PCFkey'],imgFile))
         except:
-            LOG.warning("Problem linking mirs image file: {)".format(imgFilename))
+            LOG.warning("Problem linking mirs image file: {}".format(imgFilename))
             status=False
             return(status)
  
@@ -262,7 +262,7 @@ def WORK(config, task):
             utils.linkFile(sndPath,sndFile,workDir,sndFile)
             pcfFH.write("{}={}\n".format(snd['PCFkey'],sndFile))
         except:
-            LOG.warning("Problem linking mirs sounding file: {)".format(sndFilename))
+            LOG.warning("Problem linking mirs sounding file: {}".format(sndFilename))
             status=False
             return(status)
  

@@ -85,10 +85,10 @@ def TASKS(config):
 
     # Determine MIRS-TC model runs time window variables
     runDTG=meta['runDTG'].replace(minute=0,second=0,microsecond=0) # Round to the previous hour
-    startDTG=runDTG-datetime.timedelta(seconds=meta['startDelta'])
-    endDTG=runDTG-datetime.timedelta(seconds=meta['endDelta'])
-    runDelta=datetime.timedelta(seconds=meta['runDelta'])
-    dataDelta=datetime.timedelta(seconds=meta['dataDelta'])
+    startDTG=runDTG-datetime.timedelta(seconds=meta['startDelta']) # Start datatime runs window e.g. 36hrs x 3600 seconds
+    endDTG=runDTG-datetime.timedelta(seconds=meta['endDelta'])     # End time runs window e.g. 12hrs x 3600 seconds
+    runDelta=datetime.timedelta(seconds=meta['runDelta'])          # Runs delta e.g. every 2hrs x 3600 seconds
+    dataDelta=datetime.timedelta(seconds=meta['dataDelta'])        # data deltas (backward search windows) e.g. 9hrs x 3600
 
     # Retrieve files (adeck,gfs,mirs)
     FA = fileAction.fileAction(config)
@@ -128,7 +128,7 @@ def TASKS(config):
         for filename in filenames:
             m=re.match(gfs['re'],os.path.basename(filename))
             fields=m.groupdict()
-            gfsDTG=datetime.datetime.strptime("".join([fields['runDTG'],fields['hour']],"%Y%m%d%H")
+            gfsDTG=datetime.datetime.strptime("".join([fields['runDTG'],fields['hour']]),"%Y%m%d%H")
             if gfsDTG > latestDTG:
                 latestDTG=gfsDTG
                 gfsFile=filename
@@ -250,7 +250,7 @@ def WORK(config, task):
             utils.linkFile(adeckPath,adeckFile,workDir,adeckNDEFile)
             pcfFH.write("{}={}\n".format(adeck['PCFkey'],adeckNDEFile))
         except:
-            LOG.warning("Problem linking adeck file: {)".format(adeckFilename))
+            LOG.warning("Problem linking adeck file: {}".format(adeckFilename))
             status=False
             return(status)
 
@@ -260,13 +260,13 @@ def WORK(config, task):
         gfsPath,gfsFile=os.path.split(task['gfs'])
         m=re.match(gfs['re'],gfsFile)
         fields=m.groupdict()
-        gfsDTG=datetime.datetime.strptime("".join([fields['runDTG'],fields['hour']],"%Y%m%d%H")
+        gfsDTG=datetime.datetime.strptime("".join([fields['runDTG'],fields['hour']]),"%Y%m%d%H")
         gfsNDEFile="gfs.t{}z.pgrb2.1p00.f{}.{}".format(gfsDTG.strftime("%H"),fields['fhour'],gfsDTG.strftime("%Y%m%d"))
     
         utils.linkFile(gfsPath,gfsFile,workDir,gfsNDEFile)
         pcfFH.write("{}={}\n".format(gfs['PCFkey'],gfsNDEFile))
     except:
-        LOG.warning("Problem linking gfs file: {)".format(task['gfs']))
+        LOG.warning("Problem linking gfs file: {}".format(task['gfs']))
         status=False
         return(status)
 
@@ -278,7 +278,7 @@ def WORK(config, task):
             utils.linkFile(imgPath,imgFile,workDir,imgFile)
             pcfFH.write("{}={}\n".format(img['PCFkey'],imgFile))
         except:
-            LOG.warning("Problem linking mirs image file: {)".format(imgFilename))
+            LOG.warning("Problem linking mirs image file: {}".format(imgFilename))
             status=False
             return(status)
  
@@ -288,7 +288,7 @@ def WORK(config, task):
             utils.linkFile(sndPath,sndFile,workDir,sndFile)
             pcfFH.write("{}={}\n".format(snd['PCFkey'],sndFile))
         except:
-            LOG.warning("Problem linking mirs sounding file: {)".format(sndFilename))
+            LOG.warning("Problem linking mirs sounding file: {}".format(sndFilename))
             status=False
             return(status)
  
